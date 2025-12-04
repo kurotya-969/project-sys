@@ -1,0 +1,544 @@
+{
+  "events": [
+    {
+      "id": "play_001",
+      "type": "play",
+      "weight": 5,
+      "text": ["しすと一緒に映画を見ました。", "コメディ映画で二人で笑い合いました。"],
+      "affection_delta": 5,
+      "money_delta": -500,
+      "special": true
+    },
+    {
+      "id": "play_002",
+      "type": "play",
+      "weight": 4,
+      "text": ["しすと公園を散歩しました。", "桜の花びらが舞い散る中、楽しい会話をしました。"],
+      "affection_delta": 4,
+      "money_delta": 0,
+      "special": true
+    },
+    {
+      "id": "play_003",
+      "type": "play",
+      "weight": 6,
+      "text": ["しすとゲームをしました。", "対戦ゲームで盛り上がりました。"],
+      "affection_delta": 6,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "play_004",
+      "type": "play",
+      "weight": 3,
+      "text": ["しすと料理を作りました。", "一緒に作ったカレーはとても美味しかったです。"],
+      "affection_delta": 7,
+      "money_delta": -300,
+      "special": true
+    },
+    {
+      "id": "play_005",
+      "type": "play",
+      "weight": 5,
+      "text": ["しすと本屋に行きました。", "お互いにおすすめの本を紹介し合いました。"],
+      "affection_delta": 4,
+      "money_delta": -800,
+      "special": true
+    },
+    {
+      "id": "play_006",
+      "type": "play",
+      "weight": 4,
+      "text": ["しすと音楽を聴きました。", "お気に入りの曲を共有して楽しい時間を過ごしました。"],
+      "affection_delta": 5,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "play_007",
+      "type": "play",
+      "weight": 6,
+      "text": ["しすとカフェに行きました。", "美味しいケーキを食べながらおしゃべりしました。"],
+      "affection_delta": 6,
+      "money_delta": -1000,
+      "special": true
+    },
+    {
+      "id": "play_008",
+      "type": "play",
+      "weight": 3,
+      "text": ["しすと写真を撮りに行きました。", "綺麗な風景をバックに記念写真を撮りました。"],
+      "affection_delta": 5,
+      "money_delta": 0,
+      "special": true
+    },
+    {
+      "id": "play_009",
+      "type": "play",
+      "weight": 5,
+      "text": ["しすとテレビを見ました。", "面白いバラエティ番組で一緒に笑いました。"],
+      "affection_delta": 3,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "play_010",
+      "type": "play",
+      "weight": 4,
+      "text": ["しすと掃除をしました。", "二人で協力して部屋がピカピカになりました。"],
+      "affection_delta": 4,
+      "money_delta": 0,
+      "special": false
+    }, {
+
+      "id": "play_011",
+      "type": "play",
+      "weight": 6,
+      "text": ["しすとショッピングに行きました。", "お互いの服を選び合って楽しみました。"],
+      "affection_delta": 5,
+      "money_delta": -1500,
+      "special": true
+    },
+    {
+      "id": "play_012",
+      "type": "play",
+      "weight": 3,
+      "text": ["しすと星空を見ました。", "夜空の美しさに二人で感動しました。"],
+      "affection_delta": 8,
+      "money_delta": 0,
+      "special": true
+    },
+    {
+      "id": "play_013",
+      "type": "play",
+      "weight": 5,
+      "text": ["しすとパズルをしました。", "協力して難しいパズルを完成させました。"],
+      "affection_delta": 4,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "play_014",
+      "type": "play",
+      "weight": 4,
+      "text": ["しすと動物園に行きました。", "可愛い動物たちを見て癒されました。"],
+      "affection_delta": 6,
+      "money_delta": -800,
+      "special": true
+    },
+    {
+      "id": "play_015",
+      "type": "play",
+      "weight": 5,
+      "text": ["しすとお絵描きをしました。", "お互いの似顔絵を描いて笑い合いました。"],
+      "affection_delta": 5,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "play_016",
+      "type": "play",
+      "weight": 6,
+      "text": ["しすと遊園地に行きました。", "ジェットコースターでスリルを共有しました。"],
+      "affection_delta": 7,
+      "money_delta": -2000,
+      "special": true
+    },
+    {
+      "id": "play_017",
+      "type": "play",
+      "weight": 3,
+      "text": ["しすと温泉に行きました。", "リラックスした時間を過ごしました。"],
+      "affection_delta": 8,
+      "money_delta": -3000,
+      "special": true
+    },
+    {
+      "id": "play_018",
+      "type": "play",
+      "weight": 4,
+      "text": ["しすとボードゲームをしました。", "戦略を練りながら楽しい勝負をしました。"],
+      "affection_delta": 4,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "play_019",
+      "type": "play",
+      "weight": 5,
+      "text": ["しすと花火を見ました。", "夏の夜空に咲く花火に二人で見とれました。"],
+      "affection_delta": 7,
+      "money_delta": 0,
+      "special": true
+    },
+    {
+      "id": "play_020",
+      "type": "play",
+      "weight": 4,
+      "text": ["しすとお菓子作りをしました。", "甘いクッキーを一緒に焼きました。"],
+      "affection_delta": 6,
+      "money_delta": -200,
+      "special": true
+    },    {
+
+      "id": "work_001",
+      "type": "work",
+      "weight": 5,
+      "text": ["今日も一日お疲れさまでした。", "順調に仕事をこなすことができました。"],
+      "affection_delta": 0,
+      "money_delta": 5000,
+      "special": false
+    },
+    {
+      "id": "work_002",
+      "type": "work",
+      "weight": 4,
+      "text": ["残業をしました。", "疲れましたが、しっかりと稼ぐことができました。"],
+      "affection_delta": -1,
+      "money_delta": 6500,
+      "special": false
+    },
+    {
+      "id": "work_003",
+      "type": "work",
+      "weight": 6,
+      "text": ["プロジェクトが成功しました。", "上司に褒められて嬉しかったです。"],
+      "affection_delta": 1,
+      "money_delta": 7000,
+      "special": false
+    },
+    {
+      "id": "work_004",
+      "type": "work",
+      "weight": 3,
+      "text": ["新しいクライアントとの契約が決まりました。", "ボーナスをもらいました。"],
+      "affection_delta": 2,
+      "money_delta": 8000,
+      "special": false
+    },
+    {
+      "id": "work_005",
+      "type": "work",
+      "weight": 5,
+      "text": ["会議で良いアイデアを提案できました。", "チームメンバーから評価されました。"],
+      "affection_delta": 1,
+      "money_delta": 5500,
+      "special": false
+    },
+    {
+      "id": "work_006",
+      "type": "work",
+      "weight": 4,
+      "text": ["難しい問題を解決しました。", "達成感と共に報酬を得ました。"],
+      "affection_delta": 0,
+      "money_delta": 6000,
+      "special": false
+    },
+    {
+      "id": "work_007",
+      "type": "work",
+      "weight": 6,
+      "text": ["効率よく作業を進めました。", "早めに仕事を終えることができました。"],
+      "affection_delta": 1,
+      "money_delta": 5000,
+      "special": false
+    },
+    {
+      "id": "work_008",
+      "type": "work",
+      "weight": 2,
+      "text": ["トラブルが発生しました。", "対応に追われて疲れましたが、なんとか解決しました。"],
+      "affection_delta": -2,
+      "money_delta": 4500,
+      "special": false
+    },
+    {
+      "id": "work_009",
+      "type": "work",
+      "weight": 5,
+      "text": ["新人の指導をしました。", "教えることで自分も成長できました。"],
+      "affection_delta": 1,
+      "money_delta": 5200,
+      "special": false
+    },
+    {
+      "id": "work_010",
+      "type": "work",
+      "weight": 4,
+      "text": ["資料作成に集中しました。", "丁寧に作った資料が評価されました。"],
+      "affection_delta": 0,
+      "money_delta": 5800,
+      "special": false
+    },  
+  {
+      "id": "work_011",
+      "type": "work",
+      "weight": 5,
+      "text": ["営業活動が実を結びました。", "新規顧客を獲得できました。"],
+      "affection_delta": 2,
+      "money_delta": 7500,
+      "special": false
+    },
+    {
+      "id": "work_012",
+      "type": "work",
+      "weight": 3,
+      "text": ["システムのメンテナンスをしました。", "安定稼働を維持できました。"],
+      "affection_delta": 0,
+      "money_delta": 5000,
+      "special": false
+    },
+    {
+      "id": "work_013",
+      "type": "work",
+      "weight": 4,
+      "text": ["研修に参加しました。", "新しいスキルを身につけることができました。"],
+      "affection_delta": 1,
+      "money_delta": 4800,
+      "special": false
+    },
+    {
+      "id": "work_014",
+      "type": "work",
+      "weight": 6,
+      "text": ["チームワークを発揮しました。", "みんなで協力して目標を達成しました。"],
+      "affection_delta": 1,
+      "money_delta": 6200,
+      "special": false
+    },
+    {
+      "id": "work_015",
+      "type": "work",
+      "weight": 2,
+      "text": ["機械の故障に対応しました。", "修理は大変でしたが、無事に復旧しました。"],
+      "affection_delta": -1,
+      "money_delta": 4000,
+      "special": false
+    },
+    {
+      "id": "work_016",
+      "type": "work",
+      "weight": 5,
+      "text": ["プレゼンテーションを成功させました。", "クライアントに好評でした。"],
+      "affection_delta": 2,
+      "money_delta": 6800,
+      "special": false
+    },
+    {
+      "id": "work_017",
+      "type": "work",
+      "weight": 4,
+      "text": ["データ分析を行いました。", "有用な情報を見つけることができました。"],
+      "affection_delta": 0,
+      "money_delta": 5400,
+      "special": false
+    },
+    {
+      "id": "work_018",
+      "type": "work",
+      "weight": 3,
+      "text": ["品質管理を徹底しました。", "製品の品質向上に貢献しました。"],
+      "affection_delta": 1,
+      "money_delta": 5600,
+      "special": false
+    },
+    {
+      "id": "work_019",
+      "type": "work",
+      "weight": 5,
+      "text": ["効率化の提案をしました。", "コスト削減に成功しました。"],
+      "affection_delta": 1,
+      "money_delta": 6500,
+      "special": false
+    },
+    {
+      "id": "work_020",
+      "type": "work",
+      "weight": 4,
+      "text": ["顧客サポートを行いました。", "お客様に感謝されて嬉しかったです。"],
+      "affection_delta": 2,
+      "money_delta": 5300,
+      "special": false
+    },  
+  {
+      "id": "none_001",
+      "type": "none",
+      "weight": 5,
+      "text": ["今日は何もせずに過ごしました。", "のんびりとした一日でした。"],
+      "affection_delta": 0,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_002",
+      "type": "none",
+      "weight": 4,
+      "text": ["ぼーっと時間を過ごしました。", "特に何も起こりませんでした。"],
+      "affection_delta": -1,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_003",
+      "type": "none",
+      "weight": 6,
+      "text": ["一日中寝て過ごしました。", "体は休まりましたが、時間がもったいなかったです。"],
+      "affection_delta": -1,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_004",
+      "type": "none",
+      "weight": 3,
+      "text": ["ネットサーフィンをしていました。", "気がついたら一日が終わっていました。"],
+      "affection_delta": -2,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_005",
+      "type": "none",
+      "weight": 5,
+      "text": ["窓の外をぼんやり眺めていました。", "雲の流れを見ているうちに時間が過ぎました。"],
+      "affection_delta": 0,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_006",
+      "type": "none",
+      "weight": 4,
+      "text": ["スマホをいじって過ごしました。", "SNSを見ているうちに一日が終わりました。"],
+      "affection_delta": -1,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_007",
+      "type": "none",
+      "weight": 2,
+      "text": ["やる気が出ませんでした。", "何をするにも気力が湧きませんでした。"],
+      "affection_delta": -3,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_008",
+      "type": "none",
+      "weight": 5,
+      "text": ["読書をして過ごしました。", "面白い本に夢中になって時間を忘れました。"],
+      "affection_delta": 1,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_009",
+      "type": "none",
+      "weight": 4,
+      "text": ["音楽を聴いて過ごしました。", "好きな曲でリラックスできました。"],
+      "affection_delta": 0,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_010",
+      "type": "none",
+      "weight": 6,
+      "text": ["掃除をしました。", "部屋が綺麗になってすっきりしました。"],
+      "affection_delta": 1,
+      "money_delta": 0,
+      "special": false
+    },    {
+
+      "id": "none_011",
+      "type": "none",
+      "weight": 3,
+      "text": ["テレビを見て過ごしました。", "面白い番組があまりありませんでした。"],
+      "affection_delta": -1,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_012",
+      "type": "none",
+      "weight": 5,
+      "text": ["昼寝をしました。", "疲れが取れてすっきりしました。"],
+      "affection_delta": 0,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_013",
+      "type": "none",
+      "weight": 4,
+      "text": ["日記を書きました。", "今日の出来事を振り返ることができました。"],
+      "affection_delta": 1,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_014",
+      "type": "none",
+      "weight": 2,
+      "text": ["何もする気になれませんでした。", "一日中ベッドで過ごしました。"],
+      "affection_delta": -2,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_015",
+      "type": "none",
+      "weight": 5,
+      "text": ["料理を作りました。", "美味しい料理ができて満足しました。"],
+      "affection_delta": 2,
+      "money_delta": -300,
+      "special": false
+    },
+    {
+      "id": "none_016",
+      "type": "none",
+      "weight": 4,
+      "text": ["散歩に出かけました。", "新鮮な空気を吸ってリフレッシュしました。"],
+      "affection_delta": 1,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_017",
+      "type": "none",
+      "weight": 3,
+      "text": ["ゲームをして過ごしました。", "時間を忘れて夢中になりました。"],
+      "affection_delta": 0,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_018",
+      "type": "none",
+      "weight": 6,
+      "text": ["家計簿をつけました。", "お金の管理ができてよかったです。"],
+      "affection_delta": 1,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_019",
+      "type": "none",
+      "weight": 2,
+      "text": ["憂鬱な気分でした。", "何をしても楽しくありませんでした。"],
+      "affection_delta": -3,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_020",
+      "type": "none",
+      "weight": 5,
+      "text": ["瞑想をしました。", "心が落ち着いて平穏な気持ちになりました。"],
+      "affection_delta": 2,
+      "money_delta": 0,
+      "special": false
+    }
+  ]
+}

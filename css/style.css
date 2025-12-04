@@ -1,0 +1,957 @@
+/* リセットCSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* 画面共通スタイル */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* タイトル画面 */
+#title-screen {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    justify-content: center;
+    align-items: center;
+}
+
+.title-container {
+    text-align: center;
+}
+
+.game-title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.title-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.menu-btn {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+.menu-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* メイン画面 */
+#main-screen {
+    background-color: #2c2c2c;
+}
+
+/* ステータスバー */
+.status-bar {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    background: linear-gradient(90deg, #4a4a4a, #5a5a5a);
+    border-bottom: 2px solid #666;
+    flex-shrink: 0;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-label {
+    font-weight: bold;
+    color: #ccc;
+}
+
+/* ゲームエリア */
+.game-area {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 背景画像 */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/bg_room_day.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+/* キャラクター立ち絵 */
+.character {
+    position: absolute;
+    right: 10%;
+    bottom: 0;
+    z-index: 2;
+    height: 80%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.character img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+/* ダイアログボックス */
+.dialogue-box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 2rem;
+    z-index: 3;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dialogue-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.dialogue-continue {
+    text-align: center;
+    color: #aaa;
+    font-size: 0.9rem;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0.3;
+    }
+}
+
+/* 行動選択ボタン */
+.action-buttons {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 4;
+}
+
+.action-btn {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* イベント画面 */
+#event-screen {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* 自動送りコントロール */
+.auto-advance-controls {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 10;
+}
+
+.auto-advance-btn {
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.auto-advance-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.auto-advance-btn.active {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-color: #667eea;
+}
+
+.auto-icon {
+    font-size: 0.9rem;
+}
+
+.auto-text {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* 自動送りインジケーター */
+.auto-indicator {
+    padding: 0.6rem 1rem;
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(240, 147, 251, 0.4);
+    animation: pulse 1.5s infinite;
+}
+
+.indicator-icon {
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+.event-container {
+    max-width: 800px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.event-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.continue-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.continue-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+/* 説明画面 */
+#explanation-screen {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.explanation-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/bg_room_day.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.explanation-container {
+    max-width: 900px;
+    padding: 3rem;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.explanation-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 1rem;
+}
+
+.explanation-content {
+    margin-bottom: 2rem;
+}
+
+.explanation-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.explanation-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #a8d5ff;
+}
+
+.explanation-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 0.8rem;
+    color: #e0e0e0;
+}
+
+.explanation-section strong {
+    color: #ffd700;
+    font-weight: bold;
+}
+
+.command-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.command-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.command-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateX(5px);
+}
+
+.command-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.command-desc {
+    font-size: 1rem;
+    color: #d0d0d0;
+    line-height: 1.6;
+}
+
+.explanation-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.skip-btn {
+    flex: 1;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.skip-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.start-btn {
+    flex: 2;
+    padding: 1.2rem 2rem;
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+}
+
+.start-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+}
+
+/* エンディング画面 */
+#ending-screen {
+    background: linear-gradient(135deg, #8e44ad, #9b59b6);
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#ending-screen.with-background {
+    background: none;
+}
+
+#ending-screen .ending-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.ending-container {
+    max-width: 800px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 16px;
+}
+
+#ending-screen:not(.with-background) .ending-container {
+    background: transparent;
+}
+
+.ending-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.ending-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .game-title {
+        font-size: 2rem;
+    }
+
+    .status-bar {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .character {
+        right: 5%;
+        height: 60%;
+    }
+
+    .dialogue-box {
+        padding: 1rem;
+        min-height: 120px;
+    }
+
+    .action-buttons {
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    .action-btn {
+        min-width: 100px;
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .ending-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-title {
+        font-size: 1.5rem;
+    }
+
+    .menu-btn {
+        min-width: 150px;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .dialogue-text {
+        font-size: 1rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .action-btn {
+        min-width: 80px;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* ユーティリティクラス */
+.hidden {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-out;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* Canvas導入画面 */
+#canvas-intro-screen {
+    background-color: #2c2c2c;
+}
+
+#canvas-intro-screen .dialogue-box {
+    min-height: 200px;
+}
+
+#canvas-intro-screen .continue-btn {
+    margin: 1rem auto 0;
+    display: block;
+}
+
+/* Canvas編集画面 */
+#canvas-editor-screen {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    justify-content: center;
+    align-items: center;
+}
+
+.canvas-editor-container {
+    display: grid;
+    grid-template-columns: 180px 1fr 180px;
+    gap: 1rem;
+    width: 95%;
+    max-width: 1200px;
+    height: 85vh;
+    padding: 1rem;
+    padding-top: 3rem;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+    position: relative;
+}
+
+/* ツールパレット */
+.tool-palette {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.tool-palette h3 {
+    color: #a8d5ff;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}
+
+.tool-palette h3:first-child {
+    margin-top: 0;
+}
+
+.tool-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tool-btn {
+    padding: 0.8rem;
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tool-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.tool-btn.active {
+    background: rgba(102, 126, 234, 0.4);
+    border-color: #667eea;
+}
+
+#color-picker {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#brush-size {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+#brush-size-value {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.save-info {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(102, 126, 234, 0.2);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.save-info p {
+    color: #a8d5ff;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* キャンバスエリア */
+.canvas-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.8rem;
+    overflow-y: auto;
+    padding: 0.5rem;
+    position: relative;
+}
+
+.canvas-area h2 {
+    color: #fff;
+    font-size: 1.3rem;
+    margin: 0;
+    position: absolute;
+    top: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+#main-canvas {
+    background: #fff;
+    border: 3px solid #667eea;
+    border-radius: 8px;
+    background-image:
+        linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+        linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+        linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    cursor: crosshair;
+    display: block;
+}
+
+.complete-btn {
+    padding: 0.8rem 2.5rem;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+}
+
+.complete-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+}
+
+/* レイヤーパレット */
+.layer-palette {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.layer-palette h3 {
+    color: #a8d5ff;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+}
+
+.add-layer-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(102, 126, 234, 0.4);
+    color: #fff;
+    border: 2px solid #667eea;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.add-layer-btn:hover {
+    background: rgba(102, 126, 234, 0.6);
+    transform: translateY(-2px);
+}
+
+.layer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.layer-item {
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.layer-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.layer-item.active {
+    background: rgba(102, 126, 234, 0.3);
+    border-color: #667eea;
+}
+
+.layer-name {
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.layer-controls {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.layer-btn {
+    padding: 0.3rem 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.layer-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* エンディング前画面 */
+#pre-ending-screen {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.pre-ending-container {
+    max-width: 800px;
+    padding: 2rem;
+    text-align: center;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.pre-ending-content {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.pre-ending-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.created-character {
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.created-character img {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 12px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.sis-message {
+    margin: 1.5rem 0;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    border-left: 4px solid #f093fb;
+}
+
+.sis-message p {
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0.6rem 0;
+}
+
+.next-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+    margin-top: 1rem;
+}
+
+.next-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+}

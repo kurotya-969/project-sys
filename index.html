@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="30ターン分岐型ノベルゲーム">
+    <meta name="author" content="Visual Novel Game">
+    <title>しすとの20日間 - ビジュアルノベルゲーム</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Howler.js for audio management -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+</head>
+
+<body>
+    <!-- タイトル画面 -->
+    <div id="title-screen" class="screen active">
+        <div class="title-container">
+            <h1 class="game-title">しすとの20日間</h1>
+            <div class="title-buttons">
+                <button id="new-game-btn" class="menu-btn">はじめから</button>
+                <button id="continue-btn" class="menu-btn" style="display: none;">つづきから</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 説明画面 -->
+    <div id="explanation-screen" class="screen">
+        <div class="explanation-background"></div>
+        <div class="explanation-container">
+            <h2 class="explanation-title">ゲームの遊び方</h2>
+
+            <div class="explanation-content">
+                <div class="explanation-section">
+                    <h3>ゲームの目的</h3>
+                    <p>20日間で<strong>所持金75,000円</strong>と<strong>好感度70以上</strong>を目指しましょう！</p>
+                    <p>この2つを達成することで、わたしの顔パーツを作るための資金と、わたしとの良好な関係を築くことができます！むん！</p>
+                </div>
+
+                <div class="explanation-section">
+                    <h3>基本のコマンド</h3>
+                    <div class="command-list">
+                        <div class="command-item">
+                            <span class="command-name">遊ぶ</span>
+                            <span class="command-desc">わたしと一緒に過ごして好感度アップ！（お金が少し減るかもね）</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="command-name">仕事</span>
+                            <span class="command-desc">働いてお金を稼ぐ！（あんまり寂しくさせないでね）</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="command-name">何もしない</span>
+                            <span class="command-desc">働け～～！！！</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="explanation-section">
+                    <h3>わたし（しす）について</h3>
+                    <p>快活で素直な性格の女の子ロボと話題。顔パーツを作りたいという夢を持っているが、ジャンク品。</p>
+                    <p>くだけた敬語で話しますよ～。あなたと一緒に過ごす時間を大切にしています。</p>
+                </div>
+            </div>
+
+            <div class="explanation-buttons">
+                <button id="skip-explanation-btn" class="skip-btn">スキップ</button>
+                <button id="start-game-btn" class="start-btn">ゲーム開始</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- メイン画面 -->
+    <div id="main-screen" class="screen">
+        <!-- ステータスバー -->
+        <div id="status-bar" class="status-bar">
+            <div class="status-item">
+                <span class="status-label">日数:</span>
+                <span id="day-display">1</span>/20
+            </div>
+            <div class="status-item">
+                <span class="status-label">好感度:</span>
+                <span id="affection-display">30</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">所持金:</span>
+                <span id="money-display">0</span>円
+            </div>
+        </div>
+
+        <!-- ゲーム画面 -->
+        <div class="game-area">
+            <!-- 背景画像 -->
+            <div id="background" class="background"></div>
+
+            <!-- キャラクター立ち絵 -->
+            <div id="character" class="character">
+                <img id="character-image" src="assets/images/sis_default.png" alt="しす">
+            </div>
+
+            <!-- テキスト表示エリア -->
+            <div id="dialogue-box" class="dialogue-box">
+                <div id="dialogue-text" class="dialogue-text"></div>
+                <div id="dialogue-continue" class="dialogue-continue" style="display: none;">
+                    ▼ クリックして続ける
+                </div>
+            </div>
+
+            <!-- 行動選択ボタン -->
+            <div id="action-buttons" class="action-buttons">
+                <button id="play-btn" class="action-btn">遊ぶ</button>
+                <button id="work-btn" class="action-btn">仕事</button>
+                <button id="none-btn" class="action-btn">何もしない</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- イベント画面 -->
+    <div id="event-screen" class="screen">
+        <!-- 自動送りコントロール -->
+        <div class="auto-advance-controls">
+            <button id="auto-advance-toggle-btn" class="auto-advance-btn" title="自動送りON/OFF">
+                <span class="auto-icon">▶</span>
+                <span class="auto-text">AUTO</span>
+            </button>
+            <div id="auto-advance-indicator" class="auto-indicator" style="display: none;">
+                <span class="indicator-icon">▶▶</span>
+            </div>
+        </div>
+
+        <div class="event-container">
+            <div id="event-text" class="event-text"></div>
+            <button id="event-continue-btn" class="continue-btn" style="display: none;">続ける</button>
+        </div>
+    </div>
+
+
+    <!-- Canvas導入画面 -->
+    <div id="canvas-intro-screen" class="screen">
+        <div class="game-area">
+            <!-- 背景画像 -->
+            <div id="intro-background" class="background"></div>
+
+            <!-- キャラクター立ち絵 -->
+            <div id="intro-character" class="character">
+                <img id="intro-character-image" src="assets/images/sis_default.png" alt="しす">
+            </div>
+
+            <!-- テキスト表示エリア -->
+            <div id="intro-dialogue-box" class="dialogue-box">
+                <div id="intro-dialogue-text" class="dialogue-text"></div>
+                <button id="intro-continue-btn" class="continue-btn" style="display: none;">次へ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Canvas編集画面 -->
+    <div id="canvas-editor-screen" class="screen">
+        <div class="canvas-editor-container">
+            <!-- ツールパレット -->
+            <div class="tool-palette">
+                <h3>ツール</h3>
+                <div class="tool-buttons">
+                    <button class="tool-btn active" data-tool="pen" title="ペン">✏️</button>
+                    <button class="tool-btn" data-tool="eraser" title="消しゴム">🧹</button>
+                    <button class="tool-btn" data-tool="line" title="直線">📏</button>
+                    <button class="tool-btn" data-tool="fill" title="塗りつぶし">🎨</button>
+                </div>
+
+                <h3>色</h3>
+                <input type="color" id="color-picker" value="#000000">
+
+                <h3>ブラシサイズ</h3>
+                <input type="range" id="brush-size" min="1" max="20" value="5">
+                <span id="brush-size-value">5</span>
+
+                <div class="save-info">
+                    <p>💾 Ctrl+Sで保存できます</p>
+                </div>
+            </div>
+
+            <!-- キャンバスエリア -->
+            <div class="canvas-area">
+                <h2>しすの顔パーツを作成しよう</h2>
+                <canvas id="main-canvas" width="600" height="600"></canvas>
+                <button id="canvas-complete-btn" class="complete-btn">完了</button>
+            </div>
+
+            <!-- レイヤーパネル -->
+            <div class="layer-palette">
+                <h3>レイヤー</h3>
+                <button id="add-layer-btn" class="add-layer-btn">+ レイヤー追加</button>
+                <div id="layer-list" class="layer-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- エンディング前画面 -->
+    <div id="pre-ending-screen" class="screen">
+        <div class="pre-ending-container">
+            <div class="pre-ending-content">
+                <h2 class="pre-ending-title">完成しました！</h2>
+
+                <!-- 作成したしすの画像 -->
+                <div class="created-character">
+                    <img id="created-character-image" src="" alt="作成したしす">
+                </div>
+
+                <!-- しすのメッセージ -->
+                <div class="sis-message">
+                    <p>わぁ...！これ、わたしの顔パーツですか？</p>
+                    <p>すごく素敵です！ありがとうございます！</p>
+                    <p>これでわたし、もっと表情豊かになれそうです...！</p>
+                    <p>あなたと過ごした20日間、本当に楽しかったです。</p>
+                    <p>これからもずっと、一緒にいてくださいね！</p>
+                </div>
+
+                <button id="pre-ending-next-btn" class="next-btn">次へ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- エンディング画面 -->
+    <div id="ending-screen" class="screen">
+        <div id="ending-background" class="ending-background"></div>
+        <div class="ending-container">
+            <h2 id="ending-title" class="ending-title"></h2>
+            <div id="ending-text" class="ending-text"></div>
+            <button id="ending-return-btn" class="menu-btn">タイトルに戻る</button>
+        </div>
+    </div>
+
+    <!-- JavaScript modules -->
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
