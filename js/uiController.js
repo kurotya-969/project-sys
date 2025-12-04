@@ -17,6 +17,8 @@ class UIController {
 
         // DOM要素の参照を取得
         this.screens = {
+            prologuePart1: document.getElementById('prologue-part1-screen'),
+            prologuePart2: document.getElementById('prologue-part2-screen'),
             title: document.getElementById('title-screen'),
             explanation: document.getElementById('explanation-screen'),
             main: document.getElementById('main-screen'),
@@ -36,6 +38,8 @@ class UIController {
 
         // ボタン要素
         this.buttons = {
+            prologuePart1Next: document.getElementById('prologue-part1-next-btn'),
+            prologuePart2Next: document.getElementById('prologue-part2-next-btn'),
             newGame: document.getElementById('new-game-btn'),
             continue: document.getElementById('continue-btn'),
             startGame: document.getElementById('start-game-btn'),

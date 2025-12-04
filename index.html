@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="30ターン分岐型ノベルゲーム">
+    <meta name="description" content="20ターン分岐型ノベルゲーム">
     <meta name="author" content="Visual Novel Game">
-    <title>しすとの20日間 - ビジュアルノベルゲーム</title>
+    <title>あなたと描く20日 - ビジュアルノベルゲーム</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -16,10 +16,38 @@
 </head>
 
 <body>
+    <!-- プロローグ前半画面 -->
+    <div id="prologue-part1-screen" class="screen active">
+        <div class="prologue-part1-container">
+            <div class="prologue-text">
+                <!-- JavaScriptで動的に表示されます -->
+            </div>
+            <button id="prologue-part1-next-btn" class="prologue-btn">次へ</button>
+        </div>
+    </div>
+
+    <!-- プロローグ後半画面 -->
+    <div id="prologue-part2-screen" class="screen">
+        <div class="game-area">
+            <!-- キャラクター立ち絵（中央配置） -->
+            <div class="prologue-character">
+                <img src="assets/images/sis_default.png" alt="キャラクター">
+            </div>
+
+            <!-- ダイアログボックス -->
+            <div class="dialogue-box">
+                <div id="prologue-part2-text" class="dialogue-text">
+                    <!-- JavaScriptで動的に表示されます -->
+                </div>
+                <button id="prologue-part2-next-btn" class="continue-btn">次へ</button>
+            </div>
+        </div>
+    </div>
+
     <!-- タイトル画面 -->
-    <div id="title-screen" class="screen active">
+    <div id="title-screen" class="screen">
         <div class="title-container">
-            <h1 class="game-title">しすとの20日間</h1>
+            <h1 class="game-title">あなたと描く20日</h1>
             <div class="title-buttons">
                 <button id="new-game-btn" class="menu-btn">はじめから</button>
                 <button id="continue-btn" class="menu-btn" style="display: none;">つづきから</button>

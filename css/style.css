@@ -28,6 +28,80 @@ body {
     display: flex;
 }
 
+/* プロローグ前半画面 */
+#prologue-part1-screen {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    justify-content: center;
+    align-items: center;
+}
+
+.prologue-part1-container {
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.prologue-text {
+    font-size: 1.5rem;
+    line-height: 2;
+    margin-bottom: 3rem;
+    color: #e0e0e0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    white-space: pre-wrap;
+    /* 改行を保持 */
+}
+
+.prologue-btn {
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.prologue-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* プロローグ後半画面 */
+#prologue-part2-screen {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+#prologue-part2-screen .game-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.prologue-character {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.prologue-character img {
+    max-height: 70vh;
+    max-width: 80vw;
+    object-fit: contain;
+}
+
+#prologue-part2-screen .dialogue-box {
+    position: relative;
+    z-index: 2;
+    margin-top: auto;
+}
+
 /* タイトル画面 */
 #title-screen {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);

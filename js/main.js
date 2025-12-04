@@ -78,6 +78,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // ゲームシステムの初期化
         initializeGameSystem();
+
+        // プロローグ初期化（最初のテキストを表示）
+        initializePrologue();
     }
 });
 
@@ -96,6 +99,23 @@ async function initializeEventSystem() {
 // ゲームシステムの初期化
 function initializeGameSystem() {
     console.log('ゲームシステム初期化開始');
+
+    // プロローグボタンのイベントリスナー設定
+    if (uiController.buttons.prologuePart1Next) {
+        uiController.buttons.prologuePart1Next.addEventListener('click', () => {
+            console.log('プロローグ前半 - 次のテキストへ');
+            audioManager.playSFX('select');
+            showNextProloguePart1Text();
+        });
+    }
+
+    if (uiController.buttons.prologuePart2Next) {
+        uiController.buttons.prologuePart2Next.addEventListener('click', () => {
+            console.log('プロローグ後半 - 次のテキストへ');
+            audioManager.playSFX('select');
+            showNextProloguePart2Text();
+        });
+    }
 
     // タイトル画面ボタンのイベントリスナー設定
     uiController.setTitleButtonListeners(
@@ -617,4 +637,93 @@ function returnToTitle() {
     // ゲーム状態をリセット（オプション）
     gameState = new GameState();
     uiController.updateStatusBar(gameState.getState());
+}
+
+// ================== プロローグシステム ==================
+
+// プロローグテキストデータ
+const prologueData = {
+    part1: [
+        "妹は俺のせいで死んだ。",
+        "起床する。朝日が俺にはまぶしすぎる。ここには俺の場所はないのだと感じながら、パンを口にする。",
+        "俺にはもう何も残っていない。",
+        "いなくなった妹の写真の埃を取る。水を写真のある棚に置く。",
+        "いつもと変わらない日常。",
+        "俺が死ねばよかったのに。",
+        "俺には何もない。持っていていいはずもない。",
+        "「おはようございます、お兄様」",
+        "俺が作ってしまった、この妹によく似たアンドロイド以外には"
+    ],
+    part2: [
+        "「ああ、おはよう、しす」",
+        "「今日もお仕事ですか？それとも、わたしと出かけてくれますか？」",
+        "「そうだね、きょうは一緒にピクニックに行こうか」",
+        "「やった～！お兄様大好き！」",
+        "声帯は妹と電話した時の録音を基にして作った。",
+        "性格は、彼女が元気だったころを思い出しながら設定した。",
+        "でも、この子は妹じゃない。似てるようにしただけだ。俺はクズだ。",
+        "だから、顔パーツまでは作れずにいた。罪から目をそらすために",
+        "「お兄様、そういえば。わたしのお顔はいついただけるんですか？」",
+        "「……そのうちね」",
+        "嬉しそうなしすを見ると、苦しくなる。俺は妹の幻影にすがっている。でも、この子に罪はない",
+        "いつか、俺も罰を受ける日が来る。",
+        "「お兄様、おにぎり持っていきましょう！」",
+        "「ああ、お茶も用意するよ」",
+        "だから、その日まではそばにいさせてくれ。そばに、いてくれ。"
+    ]
+};
+
+// プロローグ前半のテキストインデックス
+let prologuePart1Index = 0;
+
+// プロローグ前半のテキストを表示
+function showNextProloguePart1Text() {
+    if (prologuePart1Index < prologueData.part1.length) {
+        const textElement = document.querySelector('.prologue-text');
+        if (textElement) {
+            textElement.textContent = prologueData.part1[prologuePart1Index];
+            prologuePart1Index++;
+        }
+    } else {
+        // 全テキスト表示完了 → 後半プロローグへ
+        console.log('プロローグ前半完了 → 後半へ遷移');
+        prologuePart1Index = 0; // リセット
+        uiController.showScreen('prologuePart2');
+        audioManager.playBGM('normal');
+        // 後半プロローグの最初のテキストを表示
+        prologuePart2Index = 0;
+        showNextProloguePart2Text();
+    }
+}
+
+// プロローグ後半のテキストインデックス
+let prologuePart2Index = 0;
+
+// プロローグ後半のテキストを表示（タイプライター効果付き）
+function showNextProloguePart2Text() {
+    if (prologuePart2Index < prologueData.part2.length) {
+        const textElement = document.getElementById('prologue-part2-text');
+        if (textElement) {
+            // タイプライター効果を使用してテキストを表示
+            uiController.typewriterEffect(textElement, prologueData.part2[prologuePart2Index], 30, () => {
+                // タイプライター効果完了
+                console.log(`プロローグ後半テキスト表示: ${prologuePart2Index + 1}/${prologueData.part2.length}`);
+            });
+            prologuePart2Index++;
+        }
+    } else {
+        // 全テキスト表示完了 → タイトル画面へ
+        console.log('プロローグ後半完了 → タイトル画面へ遷移');
+        prologuePart2Index = 0; // リセット
+        uiController.showScreen('title');
+        audioManager.stopBGM();
+    }
+}
+
+// プロローグ初期化（ゲーム起動時に自動実行）
+function initializePrologue() {
+    prologuePart1Index = 0;
+    prologuePart2Index = 0;
+    // 最初のテキストを表示
+    showNextProloguePart1Text();
 }
