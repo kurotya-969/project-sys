@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビジュアルシステムテスト</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>ビジュアルマネージャーテスト</h1>
+        
+        <div class="section">
+            <h2>背景画像テスト</h2>
+            <button onclick="testBackground('day')">昼の背景</button>
+            <button onclick="testBackground('evening')">夕方の背景</button>
+            <button onclick="testBackground('night')">夜の背景</button>
+            <button onclick="testBackgroundByDay()">日数で自動切替</button>
+        </div>
+        
+        <div class="section">
+            <h2>キャラクター立ち絵テスト</h2>
+            <button onclick="testCharacter('default')">デフォルト</button>
+            <button onclick="testCharacter('happy')">嬉しい</button>
+            <button onclick="testCharacter('sad')">悲しい</button>
+            <button onclick="testCharacter('surprised')">驚き</button>
+            <button onclick="toggleCharacter()">表示/非表示</button>
+        </div>
+        
+        <div class="section">
+            <h2>カスタム画像登録テスト</h2>
+            <button onclick="registerCustom()">カスタム画像を登録</button>
+            <button onclick="testCustom()">カスタム画像を表示</button>
+        </div>
+        
+        <div class="section">
+            <h2>現在の状態</h2>
+            <p>背景: <span id="current-bg">-</span></p>
+            <p>キャラクター: <span id="current-char">-</span></p>
+        </div>
+        
+        <div class="section">
+            <h2>ログ</h2>
+            <div id="log" style="max-height: 200px; overflow-y: auto; background: #f9f9f9; padding: 10px; font-family: monospace; font-size: 12px;"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        import VisualManager from './js/visualManager.js';
+        
+        const visualManager = new VisualManager();
+        visualManager.initialize();
+        
+        let characterVisible = true;
+        let dayCounter = 1;
+        
+        function log(message) {
+            const logDiv = document.getElementById('log');
+            const time = new Date().toLocaleTimeString();
+            logDiv.innerHTML += `[${time}] ${message}<br>`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+        
+        function updateStatus() {
+            document.getElementById('current-bg').textContent = visualManager.getCurrentBackground();
+            document.getElementById('current-char').textContent = visualManager.getCurrentCharacter();
+        }
+        
+        window.testBackground = (type) => {
+            log(`背景を「${type}」に変更`);
+            visualManager.setBackground(type);
+            updateStatus();
+        };
+        
+        window.testBackgroundByDay = () => {
+            log(`日数${dayCounter}に基づいて背景を自動設定`);
+            visualManager.setBackgroundByDay(dayCounter);
+            dayCounter++;
+            updateStatus();
+        };
+        
+        window.testCharacter = (type) => {
+            log(`キャラクターを「${type}」に変更`);
+            visualManager.setCharacter(type);
+            updateStatus();
+        };
+        
+        window.toggleCharacter = () => {
+            if (characterVisible) {
+                log('キャラクターを非表示');
+                visualManager.hideCharacter();
+            } else {
+                log('キャラクターを表示');
+                visualManager.showCharacter();
+            }
+            characterVisible = !characterVisible;
+        };
+        
+        window.registerCustom = () => {
+            visualManager.registerBackground('custom', 'assets/images/custom_bg.png');
+            visualManager.registerCharacter('custom', 'assets/images/custom_char.png');
+            log('カスタム画像を登録しました');
+        };
+        
+        window.testCustom = () => {
+            log('カスタム背景とキャラクターを表示');
+            visualManager.setBackground('custom');
+            visualManager.setCharacter('custom');
+            updateStatus();
+        };
+        
+        log('ビジュアルマネージャーを初期化しました');
+        updateStatus();
+    </script>
+</body>
+</html>

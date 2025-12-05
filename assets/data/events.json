@@ -1,0 +1,974 @@
+{
+  "events": [
+    {
+      "id": "play_001",
+      "type": "play",
+      "weight": 5,
+      "text": [
+        "映画を見た。",
+        "他愛もないコメディ映画だったが、しすは楽しそうにしていた。",
+        "「お兄様、今度メントスコーラしましょうよ！」",
+        "「絶対嫌だけど」「ええ～！」"
+      ],
+      "affection_delta": 5,
+      "money_delta": -500,
+      "special": true,
+      "condition_affection_min": 30,
+      "condition_affection_max": 40
+    },
+    {
+      "id": "play_002",
+      "type": "play",
+      "weight": 4,
+      "text": [
+        "しすと公園を散歩した。",
+        "桜の花びらが舞い散る中、暖かな陽気に包まれた。",
+        "「お兄様は桜、好きですか？」",
+        "「うん、そうだな」",
+        "「私もです！また見に来ましょうね！」",
+        "「ああ」",
+        "思えば、何年か前にも妹とこんな会話をした気がした。",
+        "約束は果たせなかったが……",
+        "せめて、しすとはまた……"
+      ],
+      "affection_delta": 4,
+      "money_delta": 0,
+      "special": true,
+      "condition_affection_min": 30,
+      "condition_affection_max": 40
+    },
+    {
+      "id": "play_003",
+      "type": "play",
+      "weight": 6,
+      "text": [
+        "しすとゲームをした。",
+        "対戦ゲームだったが、しすは俺の作った最新AIなのですごい勢いで負けた。",
+        "「お兄様、私に勝ったら何でもお願い聞きますよ」",
+        "「はいはい」",
+        "願いか。",
+        "妹とまた、こうして遊べたらよかったけど、なんて願うときもある。",
+        "でも、しすがいてくれるのはまだ救いなのかもしれない。",
+        "「お願いだから、そばにいてくれ」",
+        "しすはそれに、ただ無言で微笑んだ。ように見えた。幻覚だ。",
+        "なぜかそれが、とても悲しそうに見えた。"
+      ],
+      "affection_delta": 6,
+      "money_delta": 0,
+      "special": false,
+      "condition_affection_min": 30,
+      "condition_affection_max": 40
+    },
+    {
+      "id": "play_004",
+      "type": "play",
+      "weight": 3,
+      "text": [
+        "しすと料理を作った。",
+        "一緒に作ったカレーはとても美味しかった。",
+        "でも、しすの正確な包丁さばきは、俺が教えたわけじゃない。妹の学習データだ。",
+        "小さいころから料理を親と一緒にしていて、俺と妹の二人暮らしになってからもよく俺に作ってくれていた。",
+        "「ありがとうな、しす」",
+        "「……なんで泣いてるんですか？」",
+        "「別に、ちょっと辛かっただけだよ」"
+      ],
+      "affection_delta": 7,
+      "money_delta": -300,
+      "special": true,
+      "condition_affection_min": 30,
+      "condition_affection_max": 40
+    },
+    {
+      "id": "play_005",
+      "type": "play",
+      "weight": 5,
+      "text": [
+        "しすと本屋に行った。",
+        "お互いにおすすめの本を紹介し合った。",
+        "しすは最近、医療に興味があるのだと語った。",
+        "「大事な人の、力になりたいなって」",
+        "しすは、俺なんかよりずっとまぶしくて。",
+        "でも、俺の妹ではなかった。"
+      ],
+      "affection_delta": 4,
+      "money_delta": -800,
+      "special": true,
+      "condition_affection_min": 30,
+      "condition_affection_max": 40
+    },
+    {
+      "id": "play_006",
+      "type": "play",
+      "weight": 4,
+      "text": [
+        "しすと音楽を聴いた。",
+        "プログレッシブメタル、というのが好きらしい。",
+        "「この、この人です！ギターのモーティス様がかっこいいんですよ」",
+        "まるで自分の事のように自慢げなしすに、つい笑みがこぼれる。",
+        "「しすはギターを弾いてみたいとかあるのか？将来の夢というか、さ」",
+        "しすはそれにしばらく沈黙して天井を眺めた後、真顔でこちらを向いた。",
+        "「あなたが……いえ、お兄様が求めるなら」",
+        "「……そうか」"
+      ],
+      "affection_delta": 5,
+      "money_delta": 0,
+      "special": false,
+      "condition_affection_min": 30,
+      "condition_affection_max": 40
+    },
+    {
+      "id": "play_007",
+      "type": "play",
+      "weight": 6,
+      "text": [
+        "しすとカフェに行った。",
+        "美味しいケーキを食べながらおしゃべりを楽しんだ。",
+        "「しすは何のケーキが一番おいしそうだと思う？」",
+        "「私はチョコレートケーキが一番です！」",
+        "「そっか」",
+        "妹は、ショートケーキが一番好きだった。でも",
+        "妹と違うはしゃぎ方でケーキを頬張るしすを、少しかわいいと思えた"
+      ],
+      "affection_delta": 6,
+      "money_delta": -1000,
+      "special": true,
+      "condition_affection_min": 30,
+      "condition_affection_max": 40
+    },
+    {
+      "id": "play_008",
+      "type": "play",
+      "weight": 5,
+      "text": [
+        "しすと一緒にテレビを見た。",
+        "そういえば、テレビもしすを作るまではずっと見ていなかったな。"
+      ],
+      "affection_delta": 3,
+      "money_delta": 0,
+      "special": false,
+      "condition_affection_min": 41,
+      "condition_affection_max": 50
+    },
+    {
+      "id": "play_009",
+      "type": "play",
+      "weight": 4,
+      "text": [
+        "しすと風景を撮りに行った。",
+        "綺麗な夕日をバックに記念写真を撮った。",
+        "しすの撮る写真はとても痛々しいほどに繊細な切り口で、俺はいたく感動してしまった。",
+        "「なんでそんなにきれいな写真ばかり撮れるんだ？俺はそういった学習は一切させていないが」",
+        "「愛ですよ」",
+        "「愛？」",
+        "「はい、愛ですよ」",
+        "しすはそれ以上、何も言わずにいて。",
+        "俺は風景の中で佇む綺麗なしすが、今にもいなくなるんじゃないかって、",
+        "怖くて、とても怖いからずっと、手をつかんでいた"
+      ],
+      "affection_delta": 5,
+      "money_delta": 0,
+      "special": true,
+      "condition_affection_min": 41,
+      "condition_affection_max": 50
+    },
+    {
+      "id": "play_010",
+      "type": "play",
+      "weight": 5,
+      "text": [
+        "しすと掃除をした",
+        "二人で協力したおかげで部屋がピカピカになった。",
+        "「お兄様、このお写真は？」",
+        "しすがそう差し出した写真の中には、子供の俺と妹がいた。",
+        "「とっといて、くれ」",
+        "妹の顔を見たら、うまく言葉にならなくて、俺は絞り出すようにそう頼んだ。",
+        "「はい」",
+        "しすは機械的に、それを保存した。どこか寂しそうだったのは",
+        "ずっと俺が、過去にとらわれているからだろうか。"
+      ],
+      "affection_delta": 4,
+      "money_delta": 0,
+      "special": false,
+      "condition_affection_min": 41,
+      "condition_affection_max": 50
+    },
+    {
+      "id": "play_011",
+      "type": "play",
+      "weight": 6,
+      "text": [
+        "しすとショッピングに行った。",
+        "お互いの服を選び合って楽しんだ、もっともしすはボディすらも人間とは仕様が違うが。",
+        "「更衣室入らないで下さいね！絶対ですよ！」",
+        "「あいあい」",
+        "そうだな。しすは女の子だもんな。"
+      ],
+      "affection_delta": 5,
+      "money_delta": -1500,
+      "special": true,
+      "condition_affection_min": 41,
+      "condition_affection_max": 50
+    },
+    {
+      "id": "play_012",
+      "type": "play",
+      "weight": 3,
+      "text": [
+        "しすと星空を見た。",
+        "夜空の美しさに二人で感動した。",
+        "「流れ星に何願いました？」",
+        "「しすが幸せでありますように、とかかな」",
+        "「え～！ お兄様が幸せにしてくださいよ！」",
+        "「他力本願だなお前」",
+        "でも、それも当然だと思う。君を勝手に作ったのは、俺だから。",
+        "「しすは何を願ったんだ？」",
+        "「私の大事な人が、私を見てくれていますように。です」"
+      ],
+      "affection_delta": 8,
+      "money_delta": 0,
+      "special": true,
+      "condition_affection_min": 41,
+      "condition_affection_max": 50
+    },
+    {
+      "id": "play_013",
+      "type": "play",
+      "weight": 5,
+      "text": [
+        "しすとパズルをした。",
+        "協力して難しいパズルを完成させた。でも、頭を使うのは楽しい。",
+        "「もしかして、お兄様、ノーベルパズル賞ですか？」",
+        "「違うが」"
+      ],
+      "affection_delta": 4,
+      "money_delta": 0,
+      "special": false,
+      "condition_affection_min": 41,
+      "condition_affection_max": 50
+    },
+    {
+      "id": "play_014",
+      "type": "play",
+      "weight": 4,
+      "text": [
+        "しすと動物園に行った。",
+        "可愛い動物たちを見て癒された。",
+        "「お兄様！猿山より私の方が可愛いですよ！ほらほら！」",
+        "「でもしすは生物じゃないだろ」",
+        "「え～！」"
+      ],
+      "affection_delta": 6,
+      "money_delta": -800,
+      "special": true,
+      "condition_affection_min": 41,
+      "condition_affection_max": 50
+    },
+    {
+      "id": "play_015",
+      "type": "play",
+      "weight": 5,
+      "text": [
+        "しすとお絵描きをした。",
+        "お互いの似顔絵を描いてしばしゆっくり過ごした。",
+        "「お兄様、老け顔ですね」",
+        "「余計な指摘ありがとうよ」"
+      ],
+      "affection_delta": 5,
+      "money_delta": 0,
+      "special": false,
+      "condition_affection_min": 51,
+      "condition_affection_max": 100
+    },
+    {
+      "id": "play_016",
+      "type": "play",
+      "weight": 6,
+      "text": [
+        "しすと遊園地に行った。",
+        "ジェットコースターでスリルを共有した。",
+        "「これが噂の対負荷実験ですか！？私、耐えられますかね！？」",
+        "「落ちんなって」",
+        "……最近、妹の事を思い出す機会が減った。ふと、そう思った。",
+        "「怖かったけど、また来ましょうね！」",
+        "「ああ、約束な」",
+        "絶対に、絶対な。"
+      ],
+      "affection_delta": 7,
+      "money_delta": -2000,
+      "special": true,
+      "condition_affection_min": 51,
+      "condition_affection_max": 100
+    },
+    {
+      "id": "play_017",
+      "type": "play",
+      "weight": 3,
+      "text": [
+        "しすと温泉に行った。",
+        "リラックスした時間を過ごした。",
+        "「わたし、耐水なんですね」「おう」",
+        "でも、としすは続ける。",
+        "「混浴なのは良くないと思います」",
+        "いや、今はコンテナのボディだからいいだろ。",
+        "そう思った俺だが、たぶん乙女の恥じらいだと思うので、黙って話を聞いていた。"
+      ],
+      "affection_delta": 8,
+      "money_delta": -3000,
+      "special": true,
+      "condition_affection_min": 51,
+      "condition_affection_max": 100
+    },
+    {
+      "id": "play_018",
+      "type": "play",
+      "weight": 4,
+      "text": [
+        "しすとボードゲームをした。",
+        "戦略を練りながら楽しい勝負をした。",
+        "「5メガネ！」",
+        "「なんの！捌いてみろ！2356ビーム！」",
+        "ああ、楽しい。",
+        "……ここに、あいつがいたらな。"
+      ],
+      "affection_delta": 4,
+      "money_delta": 0,
+      "special": false,
+      "condition_affection_min": 51,
+      "condition_affection_max": 100
+    },
+    {
+      "id": "play_019",
+      "type": "play",
+      "weight": 5,
+      "text": [
+        "しすと花火を見た。",
+        "夏の夜空に咲く花火に二人で見とれた。",
+        "「告白してもいいですよ」",
+        "「そうなんすね、しすさん」",
+        "「なんで敬語なんですか！」",
+        "二人でじぇれあううちに、夜が少しずつ流れていった。"
+      ],
+      "affection_delta": 7,
+      "money_delta": 0,
+      "special": true,
+      "condition_affection_min": 51,
+      "condition_affection_max": 100
+    },
+    {
+      "id": "play_020",
+      "type": "play",
+      "weight": 4,
+      "text": [
+        "しすと妹の墓参りに来た。",
+        "花を変えて、墓を拭いて、雑草を取って、線香とお菓子を供えた。",
+        "「お兄様、いや、あなたは……」",
+        "しすは帰り際にそう口にしてから、ずっと家まで黙っていた。"
+      ],
+      "affection_delta": 6,
+      "money_delta": -200,
+      "special": true,
+      "condition_affection_min": 51,
+      "condition_affection_max": 100
+    },
+    {
+      "id": "work_001",
+      "type": "work",
+      "weight": 5,
+      "text": [
+        "今日も一日お疲れさまな感じだった。",
+        "順調に仕事をこなすことができた。"
+      ],
+      "affection_delta": 0,
+      "money_delta": 7500,
+      "special": false,
+      "condition_money_min": 0,
+      "condition_money_max": 25000
+    },
+    {
+      "id": "work_002",
+      "type": "work",
+      "weight": 4,
+      "text": [
+        "残業をした。",
+        "疲れたが、しっかりと稼ぐことができた。少しはパーツ代になるだろうか。"
+      ],
+      "affection_delta": -1,
+      "money_delta": 9500,
+      "special": false,
+      "condition_money_min": 0,
+      "condition_money_max": 25000
+    },
+    {
+      "id": "work_003",
+      "type": "work",
+      "weight": 6,
+      "text": [
+        "プロジェクトが成功した。",
+        "上司に褒められて嬉しかった。"
+      ],
+      "affection_delta": 1,
+      "money_delta": 10000,
+      "special": false,
+      "condition_money_min": 0,
+      "condition_money_max": 25000
+    },
+    {
+      "id": "work_004",
+      "type": "work",
+      "weight": 3,
+      "text": [
+        "新しいクライアントとの契約が決まった。",
+        "ボーナスをもらった。しすのために、使ってあげたい。"
+      ],
+      "affection_delta": 2,
+      "money_delta": 12000,
+      "special": false,
+      "condition_money_min": 0,
+      "condition_money_max": 25000
+    },
+    {
+      "id": "work_005",
+      "type": "work",
+      "weight": 5,
+      "text": [
+        "会議で良いアイデアを提案できた。",
+        "チームメンバーから評価された。"
+      ],
+      "affection_delta": 1,
+      "money_delta": 8000,
+      "special": false,
+      "condition_money_min": 0,
+      "condition_money_max": 25000
+    },
+    {
+      "id": "work_006",
+      "type": "work",
+      "weight": 4,
+      "text": [
+        "難しい問題を解決した。",
+        "達成感と共に報酬を得た。"
+      ],
+      "affection_delta": 0,
+      "money_delta": 9000,
+      "special": false,
+      "condition_money_min": 0,
+      "condition_money_max": 25000
+    },
+    {
+      "id": "work_007",
+      "type": "work",
+      "weight": 6,
+      "text": [
+        "効率よく作業を進めた。",
+        "早めに仕事を終えることができた。"
+      ],
+      "affection_delta": 1,
+      "money_delta": 7500,
+      "special": false,
+      "condition_money_min": 0,
+      "condition_money_max": 25000
+    },
+    {
+      "id": "work_008",
+      "type": "work",
+      "weight": 2,
+      "text": [
+        "トラブルが発生した。",
+        "対応に追われて疲れたが、なんとか解決した。"
+      ],
+      "affection_delta": -2,
+      "money_delta": 6500,
+      "special": false,
+      "condition_money_min": 25001,
+      "condition_money_max": 50000
+    },
+    {
+      "id": "work_009",
+      "type": "work",
+      "weight": 5,
+      "text": [
+        "新人の指導をした。",
+        "教えることで自分も成長できた。"
+      ],
+      "affection_delta": 1,
+      "money_delta": 7800,
+      "special": false,
+      "condition_money_min": 25001,
+      "condition_money_max": 50000
+    },
+    {
+      "id": "work_010",
+      "type": "work",
+      "weight": 4,
+      "text": [
+        "資料作成に集中した。",
+        "丁寧に作った資料が評価された。半分しすが作ったが。"
+      ],
+      "affection_delta": 0,
+      "money_delta": 8500,
+      "special": false,
+      "condition_money_min": 25001,
+      "condition_money_max": 50000
+    },
+    {
+      "id": "work_011",
+      "type": "work",
+      "weight": 5,
+      "text": [
+        "営業活動が実を結んだ。",
+        "新規顧客を獲得できた。"
+      ],
+      "affection_delta": 2,
+      "money_delta": 11000,
+      "special": false,
+      "condition_money_min": 25001,
+      "condition_money_max": 50000
+    },
+    {
+      "id": "work_012",
+      "type": "work",
+      "weight": 3,
+      "text": [
+        "システムのメンテナンスをした。",
+        "安定稼働を維持できた。"
+      ],
+      "affection_delta": 0,
+      "money_delta": 7500,
+      "special": false,
+      "condition_money_min": 25001,
+      "condition_money_max": 50000
+    },
+    {
+      "id": "work_013",
+      "type": "work",
+      "weight": 4,
+      "text": [
+        "研修に参加した。",
+        "新しいスキルを身につけることができた。"
+      ],
+      "affection_delta": 1,
+      "money_delta": 7000,
+      "special": false,
+      "condition_money_min": 25001,
+      "condition_money_max": 50000
+    },
+    {
+      "id": "work_014",
+      "type": "work",
+      "weight": 6,
+      "text": [
+        "チームワークを発揮した。",
+        "みんなで協力して目標を達成した。"
+      ],
+      "affection_delta": 1,
+      "money_delta": 9200,
+      "special": false,
+      "condition_money_min": 25001,
+      "condition_money_max": 50000
+    },
+    {
+      "id": "work_015",
+      "type": "work",
+      "weight": 2,
+      "text": [
+        "機械の故障に対応した。",
+        "修理は大変でしたが、無事に復旧した。"
+      ],
+      "affection_delta": -1,
+      "money_delta": 6000,
+      "special": false,
+      "condition_money_min": 50001,
+      "condition_money_max": 999999
+    },
+    {
+      "id": "work_016",
+      "type": "work",
+      "weight": 5,
+      "text": [
+        "プレゼンテーションを成功させた。",
+        "クライアントに好評だった。"
+      ],
+      "affection_delta": 2,
+      "money_delta": 10000,
+      "special": false,
+      "condition_money_min": 50001,
+      "condition_money_max": 999999
+    },
+    {
+      "id": "work_017",
+      "type": "work",
+      "weight": 4,
+      "text": [
+        "データ分析を行った。",
+        "有用な情報を見つけることができた。"
+      ],
+      "affection_delta": 0,
+      "money_delta": 8000,
+      "special": false,
+      "condition_money_min": 50001,
+      "condition_money_max": 999999
+    },
+    {
+      "id": "work_018",
+      "type": "work",
+      "weight": 3,
+      "text": [
+        "品質管理を徹底した。",
+        "製品の品質向上に貢献した。"
+      ],
+      "affection_delta": 1,
+      "money_delta": 8500,
+      "special": false,
+      "condition_money_min": 50001,
+      "condition_money_max": 999999
+    },
+    {
+      "id": "work_019",
+      "type": "work",
+      "weight": 5,
+      "text": [
+        "効率化の提案をした。",
+        "コスト削減に成功した。"
+      ],
+      "affection_delta": 1,
+      "money_delta": 9500,
+      "special": false,
+      "condition_money_min": 50001,
+      "condition_money_max": 999999
+    },
+    {
+      "id": "work_020",
+      "type": "work",
+      "weight": 4,
+      "text": [
+        "顧客サポートを行った。",
+        "高齢のお客様に感謝されて嬉しかった。",
+        "ありがとうと言ってもらえることの、ありがたさを知った。"
+      ],
+      "affection_delta": 2,
+      "money_delta": 8000,
+      "special": false,
+      "condition_money_min": 50001,
+      "condition_money_max": 999999
+    },
+    {
+      "id": "none_001",
+      "type": "none",
+      "weight": 5,
+      "text": [
+        "今日は何もせずに過ごした。",
+        "うとうとしていると、妹の夢を見た。",
+        "何度も俺は妹に謝ったが、夢の中の妹は涙を流すだけで反応はしてくれなかった。"
+      ],
+      "affection_delta": 0,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_002",
+      "type": "none",
+      "weight": 4,
+      "text": [
+        "ぼーっと時間を過ごした。",
+        "特に何も起こらなかった。"
+      ],
+      "affection_delta": -1,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_003",
+      "type": "none",
+      "weight": 6,
+      "text": [
+        "一日中寝て過ごした。",
+        "体は休まりましたが、時間がもったいなかった。",
+        "でも、時間があったとしてだ。",
+        "妹の模造品を作るか仕事かの人生に、意味はあるのだろうか。"
+      ],
+      "affection_delta": -1,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_004",
+      "type": "none",
+      "weight": 3,
+      "text": [
+        "ネットサーフィンをして過ごした。",
+        "気がついたら一日が終わっていた。",
+        "よく妹にスマホ中毒になると注意されたな。もう誰も、注意してくれない。"
+      ],
+      "affection_delta": -2,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_005",
+      "type": "none",
+      "weight": 5,
+      "text": [
+        "窓の外をぼんやり眺めていた。",
+        "雲の流れを見ているうちに時間が過ぎていた。",
+        "あの空の向こうに、あいつも行ってしまったのだろうか。"
+      ],
+      "affection_delta": 0,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_006",
+      "type": "none",
+      "weight": 4,
+      "text": [
+        "スマホをいじって過ごした。",
+        "思い出に触れるのも怖くて、過去のフォルダは見えにくいところにしまった。"
+      ],
+      "affection_delta": -1,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_007",
+      "type": "none",
+      "weight": 2,
+      "text": [
+        "やる気が出なかった。",
+        "何をするにも気力が湧かない。しすに心配をかけた。"
+      ],
+      "affection_delta": -3,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_008",
+      "type": "none",
+      "weight": 5,
+      "text": [
+        "読書をして過ごした。",
+        "何の意味があるんだ。"
+      ],
+      "affection_delta": 1,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_009",
+      "type": "none",
+      "weight": 4,
+      "text": [
+        "音楽を聴いて過ごした。",
+        "好きな曲でもリラックスできなかった。"
+      ],
+      "affection_delta": 0,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_010",
+      "type": "none",
+      "weight": 6,
+      "text": [
+        "掃除をしました。",
+        "一人だと掃除は苦手だ。"
+      ],
+      "affection_delta": 1,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_011",
+      "type": "none",
+      "weight": 3,
+      "text": [
+        "テレビを見て過ごした。",
+        "面白い番組があまり見つけられなかった。"
+      ],
+      "affection_delta": -1,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_012",
+      "type": "none",
+      "weight": 5,
+      "text": [
+        "昼寝をした。",
+        "疲れが取れてすっきりした。"
+      ],
+      "affection_delta": 0,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_013",
+      "type": "none",
+      "weight": 4,
+      "text": [
+        "日記を書いて過ごした。",
+        "今日の出来事を振り返ることができた。ほぼしすと一緒にいるか、仕事だった。"
+      ],
+      "affection_delta": 1,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_014",
+      "type": "none",
+      "weight": 2,
+      "text": [
+        "何もする気になれなかった。",
+        "一日中ベッドで過ごした。"
+      ],
+      "affection_delta": -2,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_015",
+      "type": "none",
+      "weight": 5,
+      "text": [
+        "一人で料理を作った。",
+        "美味しい料理ができて満足したが、少し寂しい。"
+      ],
+      "affection_delta": 2,
+      "money_delta": -300,
+      "special": false
+    },
+    {
+      "id": "none_016",
+      "type": "none",
+      "weight": 4,
+      "text": [
+        "散歩に出かけた。",
+        "新鮮な空気を吸ってリフレッシュした。"
+      ],
+      "affection_delta": 1,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_017",
+      "type": "none",
+      "weight": 3,
+      "text": [
+        "ゲームをして過ごした。",
+        "時間を忘れて夢中になった。"
+      ],
+      "affection_delta": 0,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_018",
+      "type": "none",
+      "weight": 6,
+      "text": [
+        "家計簿をつけた。",
+        "お金の管理ができたが、焦りが募った。"
+      ],
+      "affection_delta": 1,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_019",
+      "type": "none",
+      "weight": 2,
+      "text": [
+        "憂鬱な気分だった。",
+        "何をしても楽しくなかった。"
+      ],
+      "affection_delta": -3,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "none_020",
+      "type": "none",
+      "weight": 5,
+      "text": [
+        "瞑想をした。",
+        "心が落ち着いて平穏な気持ちになった。"
+      ],
+      "affection_delta": 2,
+      "money_delta": 0,
+      "special": false
+    },
+    {
+      "id": "turning_affection_60",
+      "type": "turning",
+      "trigger": "affection_60",
+      "text": [
+        "ふと、しすが俺の顔をじっと見ていた。",
+        "「どうした？」",
+        "「いえ……最近のお兄様、少し変わりましたね」",
+        "「変わった？」",
+        "「はい。以前より……笑顔が増えました」",
+        "しすはそう言って、嬉しそうに目を、いやカメラをこちらに向けた。",
+        "「私、お兄様の笑顔を見るのが……好きです」",
+        "その言葉に、胸が締め付けられるような感覚がした。",
+        "妹の面影を追いかけて作ったはずのしすが、今は確かに、ここにいる。"
+      ],
+      "affection_delta": 0,
+      "money_delta": 0
+    },
+    {
+      "id": "turning_money_50000",
+      "type": "turning",
+      "trigger": "money_50000",
+      "text": [
+        "通帳を眺めていると、しすが後ろから覗き込んできた。",
+        "「けっこう貯まりましたね！」",
+        "「ああ……まあな」",
+        "「これで私のお顔パーツ、買えますか？」",
+        "しすの声は明るかったが、どこか不安げだった。",
+        "「もう少しだ。もう少しで……」",
+        "「待ってます。ずっと、待ってますから」",
+        "その言葉の重みを、俺はまだ理解できていなかった。"
+      ],
+      "affection_delta": 0,
+      "money_delta": 0
+    },
+    {
+      "id": "turning_affection_75",
+      "type": "turning",
+      "trigger": "affection_75",
+      "text": [
+        "その日、しすは珍しく黙り込んでいた。",
+        "「どうした、体調でも悪いのか？」",
+        "「……お兄様」",
+        "しすは俺の手を、そっと握った。",
+        "「私は……あなたが好きです」",
+        "「……え？」",
+        "「妹様の代わりじゃなくて。私として、あなたが好きです」",
+        "その告白に、俺は何も言えなかった。",
+        "でも、握り返した手の温かさは、確かだったように、思えた。",
+        "たとえ、このぬくもりがただの排熱でも。それでも……",
+        "「……ありがとう、しす」"
+      ],
+      "affection_delta": 0,
+      "money_delta": 0
+    },
+    {
+      "id": "turning_money_75000",
+      "type": "turning",
+      "trigger": "money_75000",
+      "text": [
+        "ついに、目標金額に届いた。",
+        "「お兄様！これで……！」",
+        "しすは声を震わせていた。いや、震えているように聞こえた。",
+        "「ああ。お前の顔を……作れるな」",
+        "「……はい」",
+        "しすは俺に抱きついた。",
+        "「ありがとうございます。ずっと……ずっと、待っていました」",
+        "妹の顔を模すのか、それとも——",
+        "しすだけの顔を、作るのか。",
+        "その答えは、もうすぐ出さなければならない。"
+      ],
+      "affection_delta": 0,
+      "money_delta": 0
+    }
+  ]
+}
