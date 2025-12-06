@@ -26,6 +26,8 @@ class UIController {
             canvasIntro: document.getElementById('canvas-intro-screen'),
             canvasEditor: document.getElementById('canvas-editor-screen'),
             preEnding: document.getElementById('pre-ending-screen'),
+            nothingEndingFirst: document.getElementById('nothing-ending-first-screen'),
+            nothingEndingFinal: document.getElementById('nothing-ending-final-screen'),
             ending: document.getElementById('ending-screen')
         };
 

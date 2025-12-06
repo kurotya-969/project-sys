@@ -500,8 +500,8 @@ function finishDay() {
 
     // バッドエンド条件（連続10回何もしない）のチェック
     if (currentState.consecutive_none >= 10) {
-        console.log('バッドエンド条件達成: 連続何もしない');
-        showEnding('bad_end');
+        console.log('バッドエンド条件達成: 連続何もしない - 専用イベント開始');
+        showNothingEndingEvent();
         return;
     }
 
@@ -625,12 +625,12 @@ function showCanvasIntro() {
         '「全部、全部、大切な思い出です」',
         // 核心部分
         '「あなたが私を見てくれるようになって、すごく嬉しかった」',
-        '「妹様の代わりじゃなくて、私として」',
+        '「妹さんの代わりじゃなくて、私として」',
         '「……私として、好きだって言ってくれたこと。忘れません」',
         // 顔パーツへの導入
         '「だから、お願いがあります」',
         '「私の顔を……あなたに作ってほしいんです」',
-        '「妹様の顔じゃなくて、私だけの顔を」',
+        '「妹さんの顔じゃなくて、私だけの顔を」',
         '「あなたが描いてくれるなら、どんな顔でも愛せます」',
         '「……お願いします」'
     ];
@@ -940,4 +940,167 @@ function initializePrologue() {
     uiController.showScreen('prologuePart1');
     // 最初のテキストを表示
     showNextProloguePart1Text();
+}
+
+// ================== 何もしない専用エンディングイベント ==================
+
+// シナリオテキスト: パート1（過去回想）
+const nothingEndingPart1 = [
+    '――あの日のことを思い出す。',
+    '「お兄ちゃん、今日も一緒にいてくれる？」',
+    '華はいつもそう言って、俺の袖を掴んでいた。',
+    '「……私、外に出るの怖いの。だからお兄ちゃんがいないと……」',
+    '妹は昔から引きこもりがちだった。内気で、ぼそぼそと喋る。',
+    '友達もいない。学校にも行けなくなった。',
+    'でも、俺のそばにはいつもいた。',
+    '「お兄ちゃんは私のこと、邪魔だと思ってる？」',
+    '「……そんなことないよ」',
+    '「嘘。分かってるの。私が重荷だって」',
+    '華の瞳には、愛情と憎しみが混在していた。',
+    '自分の弱さを嫌悪しながら、それでも俺に縋りつくしかなかった――',
+    '……そして、あの夜が来た。',
+    '「お兄ちゃん、今日は早く帰ってきてね」',
+    '「ああ、分かったから」',
+    '仕事は忙しかった。残業が続いていた。',
+    '帰宅すると、華が玄関で待っていた。',
+    '「遅い。私、ずっと待ってたのに」',
+    '「……悪い、仕事だったんだ」',
+    '「いつも仕事。私のことなんてどうでもいいんでしょ」',
+    '疲れていた。イライラしていた。',
+    '「……少し一人にしてくれよ」',
+    '「嫌。一人にしないで。お願い、お兄ちゃん」',
+    '華がしがみついてきた。俺はそれを振り払った。',
+    '「しつこいんだよ！少しは一人で何とかしろ！」',
+    '……あの時の華の顔を、俺は一生忘れられない。',
+    '「……そう。私がいなくなればいいんだ」',
+    '「華、そういう意味じゃ――」',
+    '華は部屋に閉じこもった。',
+    'それから数日、華は俺を避け続けた。',
+    '孤立していった。どんどん、どんどん。',
+    'そして――',
+    '華はふらりと外に出て、事故に遭った。',
+    '俺が殺したんだ。'
+];
+
+// シナリオテキスト: パート2（現在）
+const nothingEndingPart2 = [
+    '俺はもう、前に進めない。',
+    '何もする気力がない。何もかもがどうでもいい。',
+    'しすが話しかけてきても、俺はうまく答えられなくなっていた。',
+    '「お兄様……最近、元気がないですね」',
+    '「……ああ」',
+    '「わたし、何かできることはありますか？」',
+    '俺は答えられなかった。',
+    '……',
+    'ある日、しすが部屋に入ってきた。',
+    '「お兄様。わたし、決心しました」',
+    '「……何を」',
+    '「華さんの代わりになります」',
+    '「……は？」',
+    '「華さんに似た顔パーツを作りました。あなたが幸せでいられるなら、わたしは華さんになります」',
+    '「しす、お前……」',
+    '「だって、お兄様。あなたがこのまま壊れていくのを見ていられなかったんです」',
+    '「わたしがお兄様の妹になります。ずっと、ずっと一緒にいます」',
+    '俺の目から涙がこぼれた。',
+    'これでいいのかもしれない。',
+    '現実から目をそむけて、妄想の中で生きる。',
+    'それが俺にふさわしい罰だ。'
+];
+
+// 何もしない専用エンディングイベントを表示
+function showNothingEndingEvent() {
+    console.log('何もしない専用エンディングイベント開始');
+
+    // BGMを停止して専用BGMを再生
+    audioManager.playBGM('worldEnd', true);
+
+    // 専用画面を表示
+    uiController.showScreen('nothingEndingFirst');
+
+    // 全シナリオを結合
+    const allDialogues = [...nothingEndingPart1, ...nothingEndingPart2];
+    let textIndex = 0;
+    let autoAdvanceTimer = null;
+
+    const showNextText = () => {
+        if (autoAdvanceTimer) {
+            clearTimeout(autoAdvanceTimer);
+            autoAdvanceTimer = null;
+        }
+
+        const textElement = document.getElementById('nothing-ending-text');
+        const continueBtn = document.getElementById('nothing-ending-continue-btn');
+
+        if (textIndex < allDialogues.length) {
+            if (textElement) {
+                textElement.textContent = allDialogues[textIndex];
+            }
+            textIndex++;
+
+            if (textIndex < allDialogues.length) {
+                // 次のテキストがある場合
+                if (continueBtn) {
+                    continueBtn.style.display = 'block';
+                    continueBtn.textContent = '続ける';
+                }
+
+                if (isAutoAdvanceEnabled) {
+                    autoAdvanceTimer = setTimeout(() => {
+                        if (continueBtn) continueBtn.style.display = 'none';
+                        showNextText();
+                    }, 2500);
+                }
+            } else {
+                // 全テキスト表示完了
+                if (continueBtn) {
+                    continueBtn.style.display = 'block';
+                    continueBtn.textContent = '次へ';
+                    continueBtn.onclick = () => {
+                        continueBtn.style.display = 'none';
+                        showNothingFinalEnding();
+                    };
+                }
+
+                if (isAutoAdvanceEnabled) {
+                    autoAdvanceTimer = setTimeout(() => {
+                        if (continueBtn) continueBtn.style.display = 'none';
+                        showNothingFinalEnding();
+                    }, 3000);
+                }
+            }
+        }
+    };
+
+    // ボタンのイベントリスナー設定
+    const continueBtn = document.getElementById('nothing-ending-continue-btn');
+    if (continueBtn) {
+        continueBtn.onclick = () => {
+            if (autoAdvanceTimer) {
+                clearTimeout(autoAdvanceTimer);
+                autoAdvanceTimer = null;
+            }
+            continueBtn.style.display = 'none';
+            showNextText();
+        };
+    }
+
+    // 最初のテキストを表示
+    showNextText();
+}
+
+// 何もしない最終エンディングを表示
+function showNothingFinalEnding() {
+    console.log('何もしない最終エンディング画面表示');
+
+    // 最終画面を表示
+    uiController.showScreen('nothingEndingFinal');
+
+    // タイトルに戻るボタンのイベントリスナー設定
+    const returnBtn = document.getElementById('nothing-final-return-btn');
+    if (returnBtn) {
+        returnBtn.onclick = () => {
+            audioManager.playSFX('select');
+            returnToTitle();
+        };
+    }
 }

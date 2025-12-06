@@ -9,24 +9,25 @@ class AudioManager {
         this.bgmVolume = 0.7;
         this.sfxVolume = 0.8;
         this.isMuted = false;
-        
+
         // BGMファイルのパス定義
         this.bgmPaths = {
             normal: 'assets/audio/bgm_loop.mp3',
             goodEnding: 'assets/audio/ending_good.mp3',
-            badEnding: 'assets/audio/ending_bad.mp3'
+            badEnding: 'assets/audio/ending_bad.mp3',
+            worldEnd: 'assets/audio/worldend.mp3'
         };
-        
+
         // 効果音ファイルのパス定義
         this.sfxPaths = {
             click: 'assets/audio/click.mp3',
             select: 'assets/audio/select.mp3',
             notification: 'assets/audio/notification.mp3'
         };
-        
+
         this.currentBgmType = null;
     }
-    
+
     /**
      * BGMを再生する
      * @param {string} type - BGMタイプ ('normal', 'goodEnding', 'badEnding')
@@ -39,16 +40,16 @@ class AudioManager {
                 console.log(`BGM "${type}" は既に再生中です`);
                 return;
             }
-            
+
             // 既存のBGMを停止
             this.stopBGM();
-            
+
             const bgmPath = this.bgmPaths[type];
             if (!bgmPath) {
                 console.warn(`BGMタイプ "${type}" が見つかりません`);
                 return;
             }
-            
+
             this.bgm = new Howl({
                 src: [bgmPath],
                 loop: loop,
@@ -70,15 +71,15 @@ class AudioManager {
                     }
                 }
             });
-            
+
             this.bgm.play();
             this.currentBgmType = type;
-            
+
         } catch (error) {
             console.error('BGM再生エラー:', error);
         }
     }
-    
+
     /**
      * BGMを停止する
      */
@@ -91,7 +92,7 @@ class AudioManager {
             this.currentBgmType = null;
         }
     }
-    
+
     /**
      * BGMを一時停止する
      */
@@ -100,7 +101,7 @@ class AudioManager {
             this.bgm.pause();
         }
     }
-    
+
     /**
      * BGMを再開する
      */
@@ -109,7 +110,7 @@ class AudioManager {
             this.bgm.play();
         }
     }
-    
+
     /**
      * 効果音を再生する
      * @param {string} type - 効果音タイプ ('click', 'select', 'notification')
@@ -122,7 +123,7 @@ class AudioManager {
                 console.warn(`効果音タイプ "${type}" が見つかりません`);
                 return;
             }
-            
+
             // 既存の同じ効果音があれば停止
             if (this.sfx[type]) {
                 console.log(`既存の効果音 "${type}" を停止`);
@@ -130,7 +131,7 @@ class AudioManager {
                 this.sfx[type].unload();
                 delete this.sfx[type];
             }
-            
+
             this.sfx[type] = new Howl({
                 src: [sfxPath],
                 volume: this.isMuted ? 0 : this.sfxVolume,
@@ -161,15 +162,15 @@ class AudioManager {
                     }
                 }
             });
-            
+
             // play()は読み込み完了後にonloadで呼ばれるので、ここでは呼ばない
             console.log(`効果音 "${type}" 読み込み開始`);
-            
+
         } catch (error) {
             console.error('効果音再生エラー:', error);
         }
     }
-    
+
     /**
      * BGMの音量を設定する
      * @param {number} volume - 音量 (0.0 - 1.0)
@@ -180,7 +181,7 @@ class AudioManager {
             this.bgm.volume(this.bgmVolume);
         }
     }
-    
+
     /**
      * 効果音の音量を設定する
      * @param {number} volume - 音量 (0.0 - 1.0)
@@ -194,7 +195,7 @@ class AudioManager {
             }
         });
     }
-    
+
     /**
      * 全体の音量を設定する
      * @param {string} type - 'bgm' または 'sfx'
@@ -209,7 +210,7 @@ class AudioManager {
             console.warn(`不明な音量タイプ: ${type}`);
         }
     }
-    
+
     /**
      * 音声をミュートする
      */
@@ -224,7 +225,7 @@ class AudioManager {
             }
         });
     }
-    
+
     /**
      * ミュートを解除する
      */
@@ -239,7 +240,7 @@ class AudioManager {
             }
         });
     }
-    
+
     /**
      * ミュート状態を切り替える
      */
@@ -250,7 +251,7 @@ class AudioManager {
             this.mute();
         }
     }
-    
+
     /**
      * 現在のBGMタイプを取得する
      * @returns {string|null} 現在のBGMタイプ
@@ -258,7 +259,7 @@ class AudioManager {
     getCurrentBGMType() {
         return this.currentBgmType;
     }
-    
+
     /**
      * BGMが再生中かどうかを確認する
      * @returns {boolean} 再生中の場合true
@@ -266,13 +267,13 @@ class AudioManager {
     isBGMPlaying() {
         return this.bgm && this.bgm.playing();
     }
-    
+
     /**
      * 全ての音声を停止し、リソースを解放する
      */
     cleanup() {
         this.stopBGM();
-        
+
         // 全ての効果音を停止・解放
         Object.values(this.sfx).forEach(sound => {
             if (sound) {
@@ -282,7 +283,7 @@ class AudioManager {
         });
         this.sfx = {};
     }
-    
+
     /**
      * エンディングに応じたBGMを再生する
      * @param {string} endingType - エンディングタイプ
@@ -290,9 +291,9 @@ class AudioManager {
     playEndingBGM(endingType) {
         console.log('=== playEndingBGM() 呼び出し ===');
         console.log('受信したエンディングタイプ:', endingType);
-        
+
         let bgmType = 'normal';
-        
+
         switch (endingType) {
             case '理想の共存エンド':
             case '夢を叶えるエンド':
@@ -309,12 +310,12 @@ class AudioManager {
                 bgmType = 'normal';
                 console.log('デフォルト判定 -> normal BGM');
         }
-        
+
         console.log('最終的なBGMタイプ:', bgmType);
         this.playBGM(bgmType, false); // エンディングBGMはループしない
         console.log('=== playEndingBGM() 完了 ===');
     }
-    
+
     /**
      * 画面遷移時のBGM管理
      * @param {string} screenType - 画面タイプ ('title', 'main', 'event', 'ending')

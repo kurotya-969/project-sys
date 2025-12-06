@@ -1042,3 +1042,135 @@ body {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
 }
+
+/* ========================================
+   何もしないエンディング専用画面
+   ======================================== */
+
+/* 前半画面: 回想＋現在 */
+#nothing-ending-first-screen {
+    background: #1a1a1a;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.nothing-ending-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/haiiro.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    z-index: 0;
+    filter: grayscale(100%);
+}
+
+.nothing-ending-container {
+    max-width: 800px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.nothing-ending-text {
+    font-size: 1.3rem;
+    line-height: 2;
+    color: #d0d0d0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    white-space: pre-wrap;
+    margin-bottom: 2rem;
+}
+
+/* 後半画面: 最終エンディング */
+#nothing-ending-final-screen {
+    background: #0a0a0a;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.nothing-final-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/haiiro.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    z-index: 0;
+    filter: grayscale(100%) blur(3px);
+}
+
+.nothing-final-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+}
+
+.sister-character {
+    max-width: 400px;
+    max-height: 60vh;
+}
+
+.sister-character img {
+    max-width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+}
+
+.nothing-final-text {
+    font-size: 2rem;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    font-weight: bold;
+    letter-spacing: 4px;
+    animation: fadeInSlow 2s ease-in;
+}
+
+@keyframes fadeInSlow {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#nothing-final-return-btn {
+    margin-top: 2rem;
+    opacity: 0;
+    animation: fadeInDelayed 1s ease-in 3s forwards;
+}
+
+@keyframes fadeInDelayed {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
