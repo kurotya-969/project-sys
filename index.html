@@ -8,6 +8,13 @@
     <meta name="author" content="Visual Novel Game">
     <title>あなたと描く20日 - ビジュアルノベルゲーム</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap"
+        rel="stylesheet">
+
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 
@@ -51,6 +58,25 @@
             <div class="title-buttons">
                 <button id="new-game-btn" class="menu-btn">はじめから</button>
                 <button id="continue-btn" class="menu-btn" style="display: none;">つづきから</button>
+            </div>
+            
+            <!-- 音量調整UI -->
+            <div class="volume-controls">
+                <div class="volume-section">
+                    <label for="bgm-volume">BGM音量</label>
+                    <div class="volume-slider-container">
+                        <input type="range" id="bgm-volume" min="0" max="100" value="70" class="volume-slider">
+                        <span id="bgm-volume-value" class="volume-value">70%</span>
+                    </div>
+                </div>
+                <div class="volume-section">
+                    <label for="sfx-volume">効果音音量</label>
+                    <div class="volume-slider-container">
+                        <input type="range" id="sfx-volume" min="0" max="100" value="80" class="volume-slider">
+                        <span id="sfx-volume-value" class="volume-value">80%</span>
+                    </div>
+                </div>
+                <button id="mute-toggle-btn" class="mute-btn">🔊 ミュート</button>
             </div>
         </div>
     </div>
