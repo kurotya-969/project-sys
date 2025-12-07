@@ -551,6 +551,13 @@ function showEnding(endingType) {
         return;
     }
 
+    // affection_end（心でつながるエンド）の場合、専用イベントを表示
+    if (endingType === 'affection_end') {
+        console.log('心でつながるエンド - 専用イベントを表示');
+        showAffectionEndingEvent();
+        return;
+    }
+
     // その他のエンディング
     const endingTexts = {
         'perfect_end': '理想の共存を実現しました！しすとの関係も良好で、夢も叶えることができました。',
@@ -1097,6 +1104,125 @@ function showNothingFinalEnding() {
 
     // タイトルに戻るボタンのイベントリスナー設定
     const returnBtn = document.getElementById('nothing-final-return-btn');
+    if (returnBtn) {
+        returnBtn.onclick = () => {
+            audioManager.playSFX('select');
+            returnToTitle();
+        };
+    }
+}
+
+// ================== 好感度（心でつながる）エンド専用イベント ==================
+
+function showAffectionEndingEvent() {
+    console.log('好感度エンド専用イベント開始');
+
+    // BGM再生（Happy.mp3）
+    audioManager.playBGM('happy', false);
+
+    // 専用画面を表示
+    uiController.showScreen('affectionEnding');
+
+    const scenarioText = [
+        "目標金額には届かなかった。",
+        "顔パーツの材料も、機材も、何も買えない。",
+        "約束は……守れなかった。",
+        "「……すまない、しす」",
+        "しすの表情は見えない。でも、その声は優しかった。",
+        "「謝らないでください、お兄様」",
+        "「私は……お兄様と一緒にいられるだけで、十分幸せです」",
+        "……その言葉に、胸が詰まる。",
+        "思えば、この20日間、色々なことがあった。",
+        // 回想フェーズ（遊ぶイベントの振り返り）
+        "映画を見て、感想を言い合ったこと。",
+        "公園で、他愛もない話をしたこと。",
+        "星空の下で、静かな時間を過ごしたこと。",
+        // 解決フェーズ
+        "「……そうだな」",
+        "俺たちは、顔なんてなくても、もう十分に通じ合っている。",
+        "妹を失った悲しみは消えない。しすが妹の代わりになるわけじゃない。",
+        "でも、しすは『しす』として、俺の家族になってくれた。",
+        "「顔のことも、これからのことも……また二人で少しずつ考えていけばいい」",
+        "「……はい！ 私、どこまでもお供します！」",
+        "しすの顔は見えない。けれど俺には、その満面の笑みがはっきりと見えた。",
+        "（ありがとう、しす。これからもよろしくな）"
+    ];
+
+    let textIndex = 0;
+    let autoAdvanceTimer = null;
+    const textElement = document.getElementById('affection-ending-text');
+    const continueBtn = document.getElementById('affection-ending-continue-btn');
+
+    const showNextText = () => {
+        if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
+
+        if (textIndex < scenarioText.length) {
+            if (textElement) {
+                // フェード効果をつけてテキスト更新
+                textElement.style.opacity = 0;
+                setTimeout(() => {
+                    textElement.textContent = scenarioText[textIndex];
+                    textElement.style.opacity = 1;
+                }, 200);
+            }
+            textIndex++;
+
+            if (continueBtn) {
+                continueBtn.style.display = 'block';
+                continueBtn.textContent = (textIndex >= scenarioText.length) ? 'エンディングへ' : '続ける';
+            }
+
+            if (isAutoAdvanceEnabled) {
+                const waitTime = 3000;
+                autoAdvanceTimer = setTimeout(() => {
+                    if (continueBtn) continueBtn.style.display = 'none';
+                    handleContinue();
+                }, waitTime);
+            }
+        } else {
+            handleContinue();
+        }
+    };
+
+    const handleContinue = () => {
+        if (textIndex >= scenarioText.length) {
+            proceedToFinalAffectionEnding();
+        } else {
+            showNextText();
+        }
+    };
+
+    if (continueBtn) {
+        continueBtn.onclick = () => {
+            if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
+            continueBtn.style.display = 'none';
+            handleContinue();
+        };
+    }
+
+    // 最初のテキストを表示
+    showNextText();
+}
+
+function proceedToFinalAffectionEnding() {
+    console.log('好感度エンド最終画面表示');
+
+    const endingTitle = '心でつながるエンド';
+    const endingText = '顔なんてなくても、心は通じ合っている。\n私たちは、これからも家族だ。';
+
+    // エンディング画面へ
+    uiController.setEndingContent(endingTitle, endingText);
+    uiController.showScreen('ending');
+
+    // 背景設定
+    const endingBackground = document.getElementById('ending-background');
+    if (endingBackground) {
+        endingBackground.style.backgroundImage = "url('assets/images/umi.jpg')";
+        endingBackground.style.opacity = 1;
+    }
+
+    // タイトルに戻るボタン
+    const returnBtn = document.getElementById('ending-return-btn');
     if (returnBtn) {
         returnBtn.onclick = () => {
             audioManager.playSFX('select');

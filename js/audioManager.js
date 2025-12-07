@@ -15,7 +15,8 @@ class AudioManager {
             normal: 'assets/audio/bgm_loop.mp3',
             goodEnding: 'assets/audio/ending_good.mp3',
             badEnding: 'assets/audio/ending_bad.mp3',
-            worldEnd: 'assets/audio/worldend.mp3'
+            worldEnd: 'assets/audio/worldend.mp3',
+            happy: 'assets/audio/Happy.mp3'
         };
 
         // 効果音ファイルのパス定義
@@ -295,9 +296,12 @@ class AudioManager {
         let bgmType = 'normal';
 
         switch (endingType) {
+            case '心でつながるエンド':
+                bgmType = 'happy';
+                console.log('心でつながるエンド -> happy BGM');
+                break;
             case '理想の共存エンド':
             case '夢を叶えるエンド':
-            case '心でつながるエンド':
                 bgmType = 'goodEnding';
                 console.log('良いエンディング判定 -> goodEnding BGM');
                 break;
