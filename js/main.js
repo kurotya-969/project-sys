@@ -551,6 +551,13 @@ function showEnding(endingType) {
         return;
     }
 
+    // normal_endの場合、専用イベントを表示
+    if (endingType === 'normal_end') {
+        console.log('通常失敗エンド - 専用イベントを表示');
+        showNormalEndingEvent();
+        return;
+    }
+
     // affection_end（心でつながるエンド）の場合、専用イベントを表示
     if (endingType === 'affection_end') {
         console.log('心でつながるエンド - 専用イベントを表示');
@@ -603,6 +610,148 @@ function clearEndingBackground() {
     }
 }
 
+// 通常エンディング（失敗）のイベント表示
+function showNormalEndingEvent() {
+    console.log('通常エンディングイベント開始');
+
+    // エンディング背景を設定
+    setEndingBackground('assets/images/normal.jpg');
+
+    // BGM再生
+    audioManager.playBGM('yoisyo', true);
+
+    // イベント画面を使用
+    uiController.showScreen('event');
+
+    const dialogues = [
+        // オープニング（絶望） - 5セグメント
+        '……何も残らなかった。',
+        'お金も、しすとの思い出も、自信を持って言えるものは何もない。',
+        '俺は一体、この20日間何をしていたんだろうか……。',
+        '深いため息が出る。部屋の隅で、しすが静かに俺を見ている。',
+        '妹の代わりとして作ったこの子に、何も与えてやれなかった。',
+        '思えば、俺は妹にも何もしてやれなかった。',
+        'また、同じ事を繰り返しているのだろうか。',
+
+        // しすの介入 - 4セグメント
+        '「……あの、お兄様」',
+        'しすが心配そうに俺の顔を覗き込んでいる。',
+        '「そんなに落ち込まないでください」',
+        '「わたし……お兄様が苦しんでいるのを見るのが、一番つらいんです」',
+
+        // 励まし - 4セグメント
+        '「動けない中でも、わたしとお兄様自身のためによくがんばってくれたじゃないですか」',
+        '「一緒に過ごした時間、わたしは全部覚えています」',
+        '「お兄様が笑ってくれた時、わたしも嬉しかった」',
+        '「それだけで、わたしは十分幸せでした」',
+
+        // 提案 - 3セグメント
+        '「パーツの事も、わたしたちの関係性も……妹さんとの事も」',
+        '「今決める必要はないですよ」',
+        '「ずっと、死ぬまで背負って行きましょう。一緒に」',
+        'その『一緒に』は胸にずしりと来るほど重くて、でも、だからこそ……',
+
+        // 感情的クライマックス - 5セグメント
+        'しすの言葉が、染み入るように胸に響く。',
+        '情けなくて、申し訳なくて……でも、少しだけ救われた気がして。',
+        '頬を伝う涙が情けなくて、顔を背ける。',
+        'だが、しすは優しく俺を抱きしめた。',
+        '冷たいはずの機械のアームから、不思議と温かさを感じる。',
+        '「……ありがとう、しす」',
+
+        // 解決 - 3セグメント
+        '「これからも、わたしはお兄様のそばにいます」',
+        '「完璧じゃなくても、いいんです。わたしたちは、わたしたちのままで」',
+        '……そうだな。完璧じゃない、すっきりしない日常。でも、それが俺たちの現実だ。',
+        '「ありがとう」',
+        '前を向く。背負う決意をする。',
+        'だって俺は、お兄ちゃんで家族だから。'
+    ];
+
+    let textIndex = 0;
+    let autoAdvanceTimer = null;
+
+    const showNextText = () => {
+        if (autoAdvanceTimer) {
+            clearTimeout(autoAdvanceTimer);
+            autoAdvanceTimer = null;
+        }
+
+        if (textIndex < dialogues.length) {
+            uiController.displayEventText(dialogues[textIndex], () => {
+                textIndex++;
+
+                if (textIndex < dialogues.length) {
+                    // 次のテキストがある場合、ボタンを表示
+                    uiController.showEventContinueButton();
+
+                    if (isAutoAdvanceEnabled) {
+                        autoAdvanceTimer = setTimeout(() => {
+                            uiController.hideEventContinueButton();
+                            showNextText();
+                        }, 2000);
+                    }
+                } else {
+                    // 全てのテキストを表示完了
+                    if (isAutoAdvanceEnabled) {
+                        // 自動送りON: 2秒後に自動的にエンディング画面へ
+                        autoAdvanceTimer = setTimeout(() => {
+                            showFinalNormalEndingAndTitle();
+                        }, 2000);
+                    } else {
+                        // 自動送りOFF: 手動で「次へ」ボタンをクリックしてもらう
+                        const eventContinueBtn = document.getElementById('event-continue-btn');
+                        if (eventContinueBtn) {
+                            eventContinueBtn.textContent = '次へ';
+                            eventContinueBtn.onclick = () => {
+                                uiController.hideEventContinueButton();
+                                eventContinueBtn.textContent = '続ける';
+                                showFinalNormalEndingAndTitle();
+                            };
+                        }
+                        uiController.showEventContinueButton();
+                    }
+                }
+            });
+        }
+    };
+
+    // イベント継続ボタンのリスナーを設定
+    const eventContinueBtn = document.getElementById('event-continue-btn');
+    if (eventContinueBtn) {
+        eventContinueBtn.onclick = () => {
+            if (autoAdvanceTimer) {
+                clearTimeout(autoAdvanceTimer);
+                autoAdvanceTimer = null;
+            }
+            uiController.hideEventContinueButton();
+            showNextText();
+        };
+    }
+
+    // 最初のテキストを表示
+    showNextText();
+}
+
+// 通常エンディングの最終画面表示
+function showFinalNormalEndingAndTitle() {
+    // エンディング画面へ遷移
+    const endingTitle = '通常失敗エンド';
+    const endingText = '20日間お疲れ様でした。目標は達成できませんでしたが、しすとの日々は続きます。';
+
+    uiController.setEndingContent(endingTitle, endingText);
+    uiController.showScreen('ending');
+
+    // タイトルに戻るボタンのイベントリスナーを設定
+    const returnBtn = document.getElementById('ending-return-btn');
+    if (returnBtn) {
+        returnBtn.onclick = () => {
+            audioManager.playSFX('select');
+            returnToTitle();
+        };
+    }
+}
+
 // Canvas導入会話を表示
 function showCanvasIntro() {
     console.log('Canvas導入会話開始');
@@ -625,8 +774,8 @@ function showCanvasIntro() {
         'でも、しすと過ごした日々が、俺に気づかせてくれた。',
         '妹の代わりなんて、最初から存在しなかったのかもしれない。',
         // しすのセリフ
-        '「お兄様……いえ……なんとお呼びすればいいでしょうかね」',
-        '「20日間、本当にありがとうございました」',
+        '「お兄様……いえ……なんとお呼びすればいいでしょうか」',
+        '「ずっと、本当にありがとうございました」',
         '「仕事で疲れているのに、私と一緒にいてくれて……」',
         '「映画を見たり、散歩したり、料理を作ったり……」',
         '「全部、全部、大切な思い出です」',
@@ -757,6 +906,7 @@ function showPostCreationDialogue() {
         '「……知ってます」',
         '「あなたが変わっていくのを、ずっと見ていました」',
         '「私を見てくれるようになって、本当に嬉しかった」',
+        'しすが、俺の手を握る。',
         // 未来への約束
         '「お兄様。いえ……」',
         '「これからは、なんて呼べばいいですか？」',
@@ -890,7 +1040,7 @@ const prologueData = {
         "いつか、俺も罰を受ける日が来る。",
         "「お兄様、おにぎり持っていきましょう！」",
         "「ああ、お茶も用意するよ」",
-        "だから、その日まではそばにいさせてくれ。そばに、いてくれ。"
+        "だから、その日までは……そばにいさせてくれ。"
     ]
 };
 
@@ -975,11 +1125,11 @@ const nothingEndingPart1 = [
     '「いつも仕事。私のことなんてどうでもいいんでしょ」',
     '疲れていた。イライラしていた。',
     '「……少し一人にしてくれよ」',
-    '「嫌。一人にしないで。お願い、お兄ちゃん」',
+    '「ご、ごめん、違うの、嫌。一人にしないで。お願い、お兄ちゃん」',
     '華がしがみついてきた。俺はそれを振り払った。',
     '「しつこいんだよ！少しは一人で何とかしろ！」',
     '……あの時の華の顔を、俺は一生忘れられない。',
-    '「……そう。私がいなくなればいいんだ」',
+    '「……そう。私がいなくなればいいんだ！ずっとそう思ってたんだ！」',
     '「華、そういう意味じゃ――」',
     '華は部屋に閉じこもった。',
     'それから数日、華は俺を避け続けた。',

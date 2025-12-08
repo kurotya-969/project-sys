@@ -16,7 +16,8 @@ class AudioManager {
             goodEnding: 'assets/audio/ending_good.mp3',
             badEnding: 'assets/audio/ending_bad.mp3',
             worldEnd: 'assets/audio/worldend.mp3',
-            happy: 'assets/audio/Happy.mp3'
+            happy: 'assets/audio/Happy.mp3',
+            yoisyo: 'assets/audio/yoisyo.mp3'
         };
 
         // 効果音ファイルのパス定義

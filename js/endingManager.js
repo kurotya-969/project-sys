@@ -47,7 +47,7 @@ class EndingManager {
         this.uiController.setEndingContent(endingTitle, endingTexts[endingType] || '');
         this.uiController.showScreen('ending');
         console.log('=== showEnding() 完了 ===');
-        
+
         return { type: 'normal_ending' };
     }
 
@@ -202,9 +202,6 @@ class EndingManager {
         }
     }
 
-    /**
-     * エンディングのクリーンアップ
-     */
     cleanup() {
         this.stopPerfectEndingEffects();
 
