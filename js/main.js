@@ -565,6 +565,13 @@ function showEnding(endingType) {
         return;
     }
 
+    // money_end（夢を叶えるエンド）の場合、専用イベントを表示
+    if (endingType === 'money_end') {
+        console.log('夢を叶えるエンド - 専用イベントを表示');
+        showMoneyEndingEvent();
+        return;
+    }
+
     // その他のエンディング
     const endingTexts = {
         'perfect_end': '理想の共存を実現しました！しすとの関係も良好で、夢も叶えることができました。',
@@ -1368,6 +1375,191 @@ function proceedToFinalAffectionEnding() {
     const endingBackground = document.getElementById('ending-background');
     if (endingBackground) {
         endingBackground.style.backgroundImage = "url('assets/images/umi.jpg')";
+        endingBackground.style.opacity = 1;
+    }
+
+    // タイトルに戻るボタン
+    const returnBtn = document.getElementById('ending-return-btn');
+    if (returnBtn) {
+        returnBtn.onclick = () => {
+            audioManager.playSFX('select');
+            returnToTitle();
+        };
+    }
+}
+
+
+// ================== 目標金額達成（夢を叶える）エンド専用イベント ==================
+
+function showMoneyEndingEvent() {
+    console.log('目標金額達成エンド専用イベント開始');
+
+    // BGM再生（money_piano.mp3）
+    audioManager.playBGM('money_piano', false);
+
+    // 専用画面を表示
+    uiController.showScreen('moneyEnding');
+
+    const scenarioText = [
+        "20日間が終わった。",
+        "俺は仕事を頑張った。本当に、頑張った。",
+        "しすと過ごす時間は少なかったかもしれないが、目標金額には到達した。",
+        
+        "「お兄様、お疲れ様でした」",
+        "しすが、いつものように優しく声をかけてくれる。",
+        "「ああ……なんとか、な」",
+        
+        "通帳を見つめる。確かに、目標金額は達成した。",
+        "これで、しすの顔パーツを作れる。",
+        
+        "「お兄様」",
+        "しすが、少し躊躇うように言葉を続けた。",
+        "「その……お顔のパーツの前に、提案があるんです」",
+        "「提案？」",
+        
+        "「はい。このお金で……二人で、旅行に行きませんか？」",
+        "しすの声は、いつもより少し弾んでいた。",
+        "「お兄様、ずっと頑張ってましたから。少し、休んでもいいんじゃないかなって」",
+        
+        "旅行、か。",
+        "確かに、ずっと仕事ばかりだった。",
+        "しすとゆっくり過ごす時間も、あまり取れなかった。",
+        
+        "「どこに行きたいんだ？」",
+        "「えっと……温泉とか、遊園地とか……」",
+        "しすは楽しそうに、行きたい場所を挙げていく。",
+        "「あ、水族館も素敵ですね！それとも山登り？」",
+        
+        "その明るい声を聞いていると、自然と笑みがこぼれる。",
+        "「7万円もあれば、けっこう豪華に行けるな」",
+        "「本当ですか！？じゃあ、お兄様はどこがいいですか？」",
+        
+        "俺が答えようとした、その時。",
+        "ふと、脳裏に華の声がよみがえった。",
+        
+        "『お兄ちゃん、私の病気がよくなったら、一緒に海に行こうね』",
+        "『ああ、約束だ』",
+        
+        "華の、おとなしい声。",
+        "兄思いで、いつも俺を気遣ってくれた妹。",
+        "自室のベッドで、しんどいながらも、それでも笑顔で約束してくれた。",
+        
+        "果たせなかった、約束。",
+        
+        "「……お兄様？」",
+        "しすの声で、我に返る。",
+        
+        "「ああ、すまん」",
+        "「大丈夫ですか？」",
+        
+        "しすの声には、心配と優しさが滲んでいた。",
+        "活発で、明るくて、いつも俺を気遣ってくれる。",
+        "華とは違う。でも、同じように、俺を想ってくれている。",
+        "しすは華じゃない。",
+        "それは、もうわかっている。",
+        "でも、しすがいてくれたから。",
+        "華との大切な記憶を、こうして思い出すことができた。",
+        "忘れかけていた約束を、思い出すことができた。",
+    
+        "「なあ、しす」",
+        "「はい？」",
+        
+        "「二人で海に、行こうか」",
+        
+        "しすは少し驚いたように、それから嬉しそうに答えた。",
+        "「はい！ぜひ！」",
+        
+        "華との約束は、果たせなかった。",
+        "でも、しすとなら。",
+        "新しい思い出を、作れるかもしれない。",
+        
+        "「じゃあ、計画立てようか。どこの海がいいかな」",
+        "「わあ！楽しみです！お兄様、海の幸も食べましょうね！」",
+        "「ああ、そうだな」",
+        
+        "二人で旅行のプランを相談する。",
+        "どこに泊まるか、何を食べるか、何をするか。",
+        "楽しい会話が、部屋に響く。",
+        
+        "顔パーツは、また後でいい。",
+        "今は、しすと一緒に。",
+        "新しい一歩を、踏み出そう。",
+        
+        "あのさざ波たちの向こうで、華も笑ってくれているだろうか。",
+        "そんなことを思いながら、俺は旅行のパンフレットを広げた。"
+
+    ];
+
+    let textIndex = 0;
+    let autoAdvanceTimer = null;
+    const textElement = document.getElementById('money-ending-text');
+    const continueBtn = document.getElementById('money-ending-continue-btn');
+
+    const showNextText = () => {
+        if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
+
+        if (textIndex < scenarioText.length) {
+            if (textElement) {
+                // フェード効果をつけてテキスト更新
+                textElement.style.opacity = 0;
+                setTimeout(() => {
+                    textElement.textContent = scenarioText[textIndex];
+                    textElement.style.opacity = 1;
+                }, 200);
+            }
+            textIndex++;
+
+            if (continueBtn) {
+                continueBtn.style.display = 'block';
+                continueBtn.textContent = (textIndex >= scenarioText.length) ? 'エンディングへ' : '続ける';
+            }
+
+            if (isAutoAdvanceEnabled) {
+                const waitTime = 3000;
+                autoAdvanceTimer = setTimeout(() => {
+                    if (continueBtn) continueBtn.style.display = 'none';
+                    handleContinue();
+                }, waitTime);
+            }
+        } else {
+            handleContinue();
+        }
+    };
+
+    const handleContinue = () => {
+        if (textIndex >= scenarioText.length) {
+            proceedToFinalMoneyEnding();
+        } else {
+            showNextText();
+        }
+    };
+
+    if (continueBtn) {
+        continueBtn.onclick = () => {
+            if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
+            continueBtn.style.display = 'none';
+            handleContinue();
+        };
+    }
+
+    // 最初のテキストを表示
+    showNextText();
+}
+
+function proceedToFinalMoneyEnding() {
+    console.log('目標金額達成エンド最終画面表示');
+
+    const endingTitle = '夢を叶えるエンド';
+    const endingText = '目標金額を達成しました。\nしすと二人で、新しい思い出を作りに行こう。';
+
+    // エンディング画面へ
+    uiController.setEndingContent(endingTitle, endingText);
+    uiController.showScreen('ending');
+
+    // 背景設定
+    const endingBackground = document.getElementById('ending-background');
+    if (endingBackground) {
+        endingBackground.style.backgroundImage = "url('assets/images/money_haikei.jpg')";
         endingBackground.style.opacity = 1;
     }
 

@@ -29,6 +29,7 @@ class UIController {
             nothingEndingFirst: document.getElementById('nothing-ending-first-screen'),
             nothingEndingFinal: document.getElementById('nothing-ending-final-screen'),
             affectionEnding: document.getElementById('affection-ending-screen'),
+            moneyEnding: document.getElementById('money-ending-screen'),
             ending: document.getElementById('ending-screen')
         };
 
